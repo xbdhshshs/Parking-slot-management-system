@@ -6,6 +6,7 @@ import com.licenta.voinescuvlad.voinescuvlad.entities.Apartment;
 import com.licenta.voinescuvlad.voinescuvlad.entities.Booking;
 import com.licenta.voinescuvlad.voinescuvlad.entities.Role;
 import com.licenta.voinescuvlad.voinescuvlad.entities.User;
+import com.licenta.voinescuvlad.voinescuvlad.repositories.RoleRepository;
 import com.licenta.voinescuvlad.voinescuvlad.services.ApartmentService;
 import com.licenta.voinescuvlad.voinescuvlad.services.BookingService;
 import com.licenta.voinescuvlad.voinescuvlad.services.DtoMapping;
@@ -27,13 +28,16 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequestMapping("/admin")
 public class AdminController {
 
-    public static int i = 4;
-    public static int u = 0;
+    public static int i = 4;//keep it 0 at the start of every rerun provided the database is empty
+    public static int u = 33;//keep it 0 at the start of every rerun provided the database is empty
     @Autowired
     private ApartmentService apartmentService;
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Autowired
     private EmailController emailService;
@@ -144,7 +148,15 @@ public class AdminController {
         }
         userService.save(user);
         AdminController.u = AdminController.u + 2;
-        int r = AdminController.u + 1;
+        long r = AdminController.u + 1;
+        System.out.println(r);
+        Optional<Role> optional = roleRepository.findById(r);
+
+        Role role = optional.get();
+        System.out.println(role);
+        String trial = "ROLE_WORKER";
+        role.setName(trial);
+        roleRepository.save(role);
 
         return "/ADM/workerList";
     }
@@ -166,7 +178,7 @@ public class AdminController {
     public String deleteUserById(@PathVariable("id") int id) {
         userService.deleteUserById(id);
 
-        return "redirect:/admin";
+        return "redirect:/";
     }
 
     @RequestMapping(path = "/viewUser/{id}")

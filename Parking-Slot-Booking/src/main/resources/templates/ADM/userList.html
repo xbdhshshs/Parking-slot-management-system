@@ -25,7 +25,7 @@
             <th>Username</th>
             <th>User email</th>
             <th>Parkings</th>
-            <th>Rating</th>
+            <th>Phone</th>
             <th>Info</th>
             <th>Delete</th>
 
@@ -40,7 +40,7 @@
             <td th:text="${tempUsers.email}"/>
             <td th:text="${tempUsers.apartments.size()}"/>
 
-            <td th:text="${tempUsers.getRatting()>0 ?tempUsers.getRatting()+'/5' : 'No ratting yet'}"  />
+            <td th:text="${tempUsers.phone}"/>
 
 
 
