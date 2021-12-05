@@ -21,10 +21,10 @@
           <h1>LOGIN</h1>
         </header>
         <section>
-          <div class="social-login">
-            <button class="google"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhwFXc0_kkWCXzk1xUiYZbiMEGg89f60qq6Q&usqp=CAU" alt="google" width="20"/><span> Google </span></button>
-            <button class="facebook"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQcAP10b_fOQmVYPKGqaiap7dyBvTOrZ0IsQ&usqp=CAU" alt="google" width="20" /><span> Facebook </span></button>
-          </div>
+<!--          <div class="social-login">-->
+<!--            <button class="google"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhwFXc0_kkWCXzk1xUiYZbiMEGg89f60qq6Q&usqp=CAU" alt="google" width="20"/><span> Google </span></button>-->
+<!--            <button class="facebook"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQcAP10b_fOQmVYPKGqaiap7dyBvTOrZ0IsQ&usqp=CAU" alt="google" width="20" /><span> Facebook </span></button>-->
+<!--          </div>-->
           <form th:action="@{/login}" method="post">
                         <div th:if="${param.error}">
                             <div class="alert alert-danger">
@@ -69,9 +69,9 @@
                         </div>
 			</form>
         </section>
-        <footer>
-          <a href="#" title="Forgot Password">Forgot Password</a>
-        </footer>
+<!--        <footer>-->
+<!--          <a href="#" title="Forgot Password">Forgot Password</a>-->
+<!--        </footer>-->
       </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
