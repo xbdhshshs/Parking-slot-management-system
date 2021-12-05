@@ -1,0 +1,101 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SmartRent|My apartments</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <!--  -->
+
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<div class="container-table-custom">
+
+
+    <h3>Owned apartments</h3>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Apartment Photo</th>
+            <th>Apartment Name</th>
+            <th>Countrey</th>
+            <th>City</th>
+            <th>Addres</th>
+            <th>Price/Night</th>
+            <th>Status</th>
+            <th>Delete</th>
+            <th>Info</th>
+            <th>Update</th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempApartments : ${apartments}">
+
+            <td class="w-25">
+                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="apartment">
+            </td>
+            <td th:text="${tempApartments.apartmentName}"/>
+            <td th:text="${tempApartments.countrey}"/>
+            <td th:text="${tempApartments.city}"/>
+            <td th:text="${tempApartments.adress}"/>
+            <td th:text="${tempApartments.ppn}"/>
+            <td th:text="${tempApartments.status}"/>
+
+
+            <td text="delete">
+                <a th:href="@{|/worker/delete/${tempApartments.id}|}"
+                   class="btn btn-primary">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+
+
+            <td text="info">
+                <a th:href="@{|/worker/viewApartment/${tempApartments.id}|}"
+                   class="btn btn-primary">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </td>
+
+
+            <td text="update">
+                <a th:href="@{|/worker/updateApartment/${tempApartments.id}|}"
+                   class="btn btn-primary">
+                    <i class="fas fa-pen"></i>
+                </a>
+            </td>
+
+
+
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

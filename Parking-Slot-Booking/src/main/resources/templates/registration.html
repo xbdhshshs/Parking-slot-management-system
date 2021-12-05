@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login page</title>
+    <link th:href="@{/css/styles.css}" href="/static/css/styles.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <title>CarSlotBooking|Registration</title>
+  </head>
+  <br>
+  <br>
+  <body>
+    <section class="wrapper">
+      <div class="content">
+        <header>
+          <h1>Register</h1>
+        </header>
+        <div th:insert="~{/fragments/header :: header}"></div>
+
+        <section>
+        <div class="container register-custom">
+    	<div th:if="${param.succes}">
+        	<div class="alert alert-info">
+             Registered successfully in our database!
+            </div>
+        </div>
+          <form th:action="@{/registration}" th:object="${user}" method="post">
+
+                    <p class="error-message"
+                       th:if="${#fields.hasGlobalErrors()}"
+                       th:each="error : ${#fields.errors('global')}"
+                       th:text="${error}">Validation error</p>
+
+
+
+
+                    <div class="form-group"
+                         th:classappend="${#fields.hasErrors('userName')}? 'has-error':''">
+                        <label for="userName" class="control-label">User name</label>
+                        <input id="userName"
+                               class="form-control"
+                               th:field="*{userName}" required="required"/>
+
+                        <p class="alert alert-danger"
+                           th:each="error: ${#fields.errors('userName')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+              <div class="form-group">
+                  <label for="phone" class="control-label">Phone</label>
+                  <input id="phone"
+                         class="form-control"
+                         th:field="*{phone}"/></div>
+
+              <div class="form-group">
+                  <label for="carReg" class="control-label">Car_registration </label>
+                  <input id="carReg"
+                         class="form-control"
+                         th:field="*{carReg}"/>
+              </div>
+
+                    <div class="form-group"
+                         th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                        <label for="email" class="control-label">E-mail</label>
+                        <input id="email"
+                               class="form-control"
+                               th:field="*{email}" required="required"/>
+                        <p class="alert alert-danger"
+                           th:each="error : ${#fields.errors('email')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+                    <div class="form-group"
+                         th:classappend="${#fields.hasErrors('emailConfirmation')}? 'has-error':''">
+                        <label for="emailConfirmation" class="control-label">Confirm e-mail</label>
+                        <input id="emailConfirmation"
+                               class="form-control"
+                               th:field="*{emailConfirmation}" required="required"/>
+                        <p class="alert alert-danger"
+                           th:each="error : ${#fields.errors('emailConfirmation')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+                    <div class="form-group"
+                         th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+                        <label for="password" class="control-label">Password</label>
+                        <input id="password"
+                               class="form-control"
+                               type="password"
+                               th:field="*{password}" required="required"/>
+                        <p class="alert alert-danger"
+                           th:each="error : ${#fields.errors('password')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+                    <div class="form-group"
+                         th:classappend="${#fields.hasErrors('passwordConfirmation')}? 'has-error':''">
+                        <label for="passwordConfirmation" class="control-label">Confirm password</label>
+                        <input id="passwordConfirmation"
+                               class="form-control"
+                               type="password"
+                               th:field="*{passwordConfirmation}" required="required"/>
+                        <p class="alert alert-danger"
+                           th:each="error : ${#fields.errors('passwordConfirmation')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
+
+              <div class="form-group">
+                  <div class="d-flex justify-content-center">
+                      <div class="d-flex justify-content-center" >
+                          <div class="d-flex justify-content-center">
+                              <input type="submit"
+                                     name="login-submit"
+                                     id="login-submi"
+                                     class="form-control btn btn-info"
+                                     value="Send OTP"/>
+                          </div>
+                      </div>
+                  </div>
+              <div >
+                  <label for="otp">Enter OTP sent:</label>
+                  <input type="password" id="otp" name="otp">
+              </div>
+
+                    <div class="form-group">
+                        <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center" >
+                                <div class="d-flex justify-content-center">
+                                    <input type="submit"
+                                           name="login-submit"
+                                           id="login-submit"
+                                           class="form-control btn btn-info"
+                                           value="Register"/>
+                                </div>
+                            </div>
+                    </div>
+                        <div class="text-center">
+                        <span style="text-align: center">Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
+                        </div>
+                    </div>
+              </div>
+          </form>
+        </div>
+        </section>
+      </div>
+    </section>
+
+
+
+
+<!--        </section>-->
+<!--        <footer>-->
+<!--          <a href="#" title="Forgot Password">Forgot Password</a>-->
+<!--        </footer>-->
+<!--      </div>-->
+<!--    </section>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<!--<div th:insert="~{/fragments/footer :: footer}"></div>-->
+    
+  </body>
+</html>

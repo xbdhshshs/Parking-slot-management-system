@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Income/Month</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+
+</head>
+<body>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="height: 400px"></div>
+<script th:inline="javascript">
+    Highcharts.chart('container', {
+        chart : {
+            type : 'pie',
+            options3d : {
+                enabled : true,
+                alpha : 45,
+                beta : 0
+            }
+        },
+        title : {
+            text : 'Yearly income monthly distribution'
+        },
+        tooltip : {
+            pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions : {
+            pie : {
+                allowPointSelect : true,
+                cursor : 'pointer',
+                depth : 35,
+                dataLabels : {
+                    enabled : true,
+                    format : '{point.name}'
+                }
+            }
+        },
+        series : [ {
+            type : 'pie',
+            name : 'Monthly income percentage represantation',
+            data : [ [ 'January', [[${January}]] ], [ 'February', [[${February}]] ], [ 'March',  [[${March}]] ], [ 'April', [[${April}]] ], [ 'May',  [[${May}]] ]
+                , [ 'June', [[${June}]] ], [ 'July', [[${July}]] ], [ 'August', [[${August}]] ], [ 'September', [[${September}]] ], [ 'October', [[${October}]] ],
+                [ 'November', [[${November}]] ], [ 'December', [[${December}]] ]]
+        } ]
+    });
+</script>
+<a th:href="@{/admin/statistics}" class="btn btn-lg btn-block btn-outline-primary"> <i
+        class="fa fa-arrow-circle-o-left"></i>&nbsp;Back</a>
+</body>
+</body>
+</html>

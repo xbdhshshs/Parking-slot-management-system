@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html th:fragment="layout (template, menu)"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+    <!-- FontAwesome Kit -->
+    <script src="https://kit.fontawesome.com/ffbf81b659.js" crossorigin="anonymous"></script>
+    <title>VVimob</title>
+
+
+</head>
+<body class="d-flex flex-column">
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
+        <a th:href="@{/}" class="navbar-brand" >Parking Slot Booking</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar"
+                aria-controls="collapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsingNavbar">
+            <ul class="navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item active">
+                    <a th:href="@{/}" class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <div sec:authorize="hasAuthority('ROLE_USER')">
+                    <li class="nav-item">
+                        <a th:href="@{/apartments}" class="nav-link" href="#">Stays</a>
+                    </li>
+                </div>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/apartments}" class="nav-link" href="#">Stays</a>
+                    </li>
+                </div>
+                <div sec:authorize="isAnonymous()">
+                    <li class="nav-item">
+                        <a th:href="@{/apartments}" class="nav-link" href="#">Stays</a>
+                    </li>
+                </div>
+<!--                <li class="nav-item">-->
+<!--                    <a th:href="@{/contact}" class="nav-link" href="#">Contact</a>-->
+<!--                </li>-->
+
+                <li class="nav-item">
+                    <a th:href="@{/aboutUs}" class="nav-link" href="#">About Us</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <span>My Account</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+
+                        <div sec:authorize="isAnonymous()">
+
+                            <a href="/login" class="dropdown-item">Log in</a>
+                            <a href="/registration" class="dropdown-item">Register</a>
+                        </div>
+
+
+                        <div sec:authorize="isAuthenticated()">
+
+                            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+
+                                <a href="/admin" class="dropdown-item">Admin options</a>
+                                <a href="/logout" class="dropdown-item">Log out</a>
+                            </div>
+                            <div sec:authorize="hasAuthority('ROLE_USER')">
+                                <a href="/user" class="dropdown-item">Logged user options</a>
+                                <a href="/logout" class="dropdown-item">Log out</a>
+
+                            </div>
+                            <div sec:authorize="hasAuthority('ROLE_WORKER')">
+                                <a href="/worker" class="dropdown-item">Logged Worker options</a>
+                                <a href="/logout" class="dropdown-item">Log out</a>
+
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+</div>
+
+</body>
+
+
+</html>
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SmartRent|Apartment form</title>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <!--  -->
+    <style>
+
+        .theForm{
+            margin-left : 32%;
+            margin-top: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<div class="container-addForm">
+
+
+
+
+
+    <form class="theForm" action="#" th:action="@{/admin/save}" th:object="${apartment}" method="POST">
+        <p class="h4 mb-4" >Save Apartment</p>
+        <input type="text" th:field="*{apartmentName}"
+               class="form-control mb-4 col-4" placeholder="Apartment name"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('apartmentName')}" th:errors="*{apartmentName}"></p>
+
+        <input type="text" th:field="*{countrey}"
+               class="form-control mb-4 col-4" placeholder="Country"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('countrey')}" th:errors="*{countrey}"></p>
+
+
+        <input type="text" th:field="*{city}"
+               class="form-control mb-4 col-4" placeholder="City"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+
+
+        <input type="text" th:field="*{adress}"
+               class="form-control mb-4 col-4" placeholder="Adress"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"></p>
+
+
+        <input type="text" th:field="*{ppn}"
+               class="form-control mb-4 col-4" placeholder="Price/Night"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('ppn')}" th:errors="*{ppn}"></p>
+
+
+
+
+
+
+
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+
+    <hr>
+    <div align="center">
+        <a th:href="@{/admin/stays}">Back to Apartment List</a>
+    </div>
+</div>
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

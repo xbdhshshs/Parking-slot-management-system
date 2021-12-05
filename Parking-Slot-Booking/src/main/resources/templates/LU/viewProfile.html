@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SmartRent|Inspect profile</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        .box{
+            display: table;
+            margin: 0 auto;
+            border: 1px solid black
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<div class="container">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">My profile</h1>
+            <p class="lead text-muted mb-0">Details for your profile </p>
+        </div>
+    </section>
+
+    <div class="box">
+        <div class="row">
+
+            <div class="col-md-5" th:object="${user}" method="POST">
+                <td class="w-25">
+                    <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png"
+                         class="img-fluid img-thumbnail" alt="apartment">
+                </td>
+                <p th:text="'User Name: ' + ${user.userName}"/>
+                <p th:text="${user.getRatting()>0 ? 'Rating: '+user.getRatting()+'/5' : 'No ratting yet'}"  />
+                <p th:text="'Reservations made so far: '+${size}"/>
+                <p th:text="'Total spent '+${sum}+' $'"/>
+                <p th:text="'Active apartments owned on SmartRent: '+${activeApartments}"/>
+                <p th:text="'Total money received: '+${guestIncome}+' $'"/>
+                <p th:text="'Bookings placed so far on my apartments : '+${reservations}"/>
+
+
+
+            </div>
+
+
+        </div>
+
+
+        <hr>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

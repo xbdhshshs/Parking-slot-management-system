@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SmartRent|About Us</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <style>
+        .d-flex{
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+<div class="custom1 d-flex flex-column sticky-footer-wrapper" id="letter">
+    <div class="custom2 container flex-fill">
+        <section class="mb-4">
+           		<h2 class="h1-responsive font-weight-bold text-center my-4">About us</h2>
+                <p class="text-center w-responsive mx-auto mb-5">
+<!--                <img src="https://bigger-picture-live.imgix.net/storage/uploads/blog/perfect-about-us/about-us.jpg?w=1220&fit=crop&crop=faces,edges&q=75&auto=format&fm=png" width="20%" height="20%" align="right">-->
+                Nowadays while traveling to a new place or traveling for shopping or traveling to crowded places
+				the main problem people face is where to park their four-wheeler safely.
+				 We here, solve that for you. We made this web app as a part of the CS F213 
+				Object oriented programming  Course.
+				 Contributors:<br>
+				 	Rahil Sanghavi  - 2020A7PS2052H<br>
+					Sanchit Gupta   - 2020A7PS2069H<br>
+					Vishnu Praneeth - 2020A7PS0126H<br>
+					Sai Rahul       - 2020A7PS0204H	
+                </p>
+        </section>
+    </div>
+</div>
+<!--<div th:insert="~{/fragments/footer :: footer}"></div>-->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
+
+</body>
+
+<style>
+	body{
+		background-image: url('https://cdn.wallpapersafari.com/4/15/c8jglL.jpg');
+		background-size: cover;
+	}
+	#letter{
+		font-family: Georgia, serif;;
+		font-size: 150%
+	}
+	
+</style>
+</html>

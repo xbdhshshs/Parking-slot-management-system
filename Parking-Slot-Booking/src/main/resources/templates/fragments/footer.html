@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+</head>
+<body>
+
+
+<!-- Navigation -->
+<!--class="footer"-->
+<div id="page-container" class="footer" th:fragment="footer" >
+
+    <!-- Footer -->
+    <footer id="myFooter" class="container-fluid w-100 py-3" >
+        <div  class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-sm myCols">
+                    <div class="container">
+                    	<a th:href="@{/contact}">Contact</a>
+           	 			<p>2021 Copyright: <a th:href="@{../HOME/default.html}"> Parking Slot Booking </a></p>
+        			</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

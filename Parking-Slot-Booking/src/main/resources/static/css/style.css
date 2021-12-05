@@ -1,0 +1,310 @@
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    bottom: 0;
+}
+
+
+/*-----Footer------*/
+.page-container {
+    position: relative;
+    min-height: 50vh;
+}
+
+#paraalign{
+	text-align: center;
+}
+
+#myFooter {
+    clear: both;
+    position: relative;
+    /*margin-top: 5vh;*/
+    background-color: #343a40;
+    color: white;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
+    font-size: 110%;
+    height: 90px;
+    margin-top: 100px;
+
+
+}
+
+#myFooter ul {
+
+
+    padding-right: 450px;
+    list-style-type: none;
+    padding-left: 10px;
+    line-height: 1.7;
+
+}
+
+#myFooter h5 {
+
+    padding-right: 400px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter .myCols {
+    text-align: center;
+}
+
+#myFooter .social-networks {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 38px;
+}
+
+#myFooter .social-networks a {
+    font-size: 32px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #f9f9f9;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+#myFooter .social-networks a:hover {
+    text-decoration: none;
+
+}
+
+#myFooter .github:hover {
+    color: #0077e2;
+}
+
+#myFooter .LinkedIn:hover {
+    color: #0077e2;
+}
+
+.box{
+    margin:0 auto;
+    width:600px;
+    padding:20px;
+    background:#f9f9f9;
+    border:2px solid #333;
+}
+
+.custom1 {
+    height: 80% !important;
+    margin-top: 50px !important;
+}
+
+.custom2 {
+    margin-top: 10% !important;
+}
+
+.login-custom {
+    height: 80% !important;
+}
+
+#login-submit{
+    align-items: center;
+}
+.register-custom {
+    height: 110% !important;
+
+}
+
+.custom-container {
+    min-height: 80% !important;
+    height: auto;
+}
+
+.custom-stays {
+    height: 80% !important;
+    margin-top: 80px !important;
+}
+
+.img-thumbnail {
+    max-width: 75% !important;
+}
+
+.img-thumbnail1 {
+    max-width: 90% !important;
+}
+
+.container-table {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    min-height: 80% !important;
+
+}
+
+.container-table-custom{
+
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 5%;
+    min-height: 80% !important;
+}
+
+.container-bookings {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+.container-duplicated {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+.container-past {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+.container-addForm {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+.container-admin {
+    min-height: 50% !important;
+    margin-top: 80px !important;
+}
+
+.button {
+    border: none;
+    color: lightskyblue;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: #005cbf;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+}
+
+.container-userlist {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+.container-workerlist {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+.container-myApartments {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+
+.search-containerLU {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+
+.container-pending {
+    min-height: 80% !important;
+    margin-top: 80px !important;
+}
+
+.container-statistics {
+    min-height: 70% !important;
+    margin-top: 80px !important;
+}
+
+.container-checkApartment {
+    min-height: 60% !important;
+    margin-top: 80px !important;
+}
+
+.container-empty {
+    min-height: 70% !important;
+    margin-top: 80px !important;
+}
+
+.container-bookingCalendar {
+    min-height: 70% !important;
+    margin-top: 80px !important;
+}
+
+.container-bookingCalendar-form {
+    min-height: 70% !important;
+    margin-top: 80px !important;
+    margin-left: 40%;
+}
+
+.container-viewUser {
+    min-height: 70% !important;
+    margin-top: 80px !important;
+    margin-left: 30%;
+}
+
+.container-viewWorker {
+    min-height: 70% !important;
+    margin-top: 80px !important;
+    margin-left: 30%;
+}
+
+.row-checkApartment {
+    margin-left: 25%;
+}
+
+.photodiv {
+    background: url("https://i.pinimg.com/originals/c8/a7/e0/c8a7e00a510b50cdf8493642c407225d.png") no-repeat center;
+    backgound-size: cover;
+    width: 50%;
+    height: 400px;
+    margin-top: 10%;
+    float: right;
+}
+
+.textdiv {
+    width: 50%;
+    float: left;
+}
+
+.photodiv1 {
+    background: url("https://cdn.flash.pt/images/2020-03/img_414x371$2020_03_22_13_57_05_246279.jpg") no-repeat center;
+    backgound-size: cover;
+    width: 50%;
+    height: 410px;
+    margin-top: 16%;
+    float: left;
+}
+
+.textdiv1 {
+    width: 50%;
+    float: right;
+
+}
+
+.photodiv2 {
+    background: url("https://www.podgroup.com/wp-content/uploads/2020/01/Webp.net-resizeimage-3-1.jpg") no-repeat center;
+    backgound-size: cover;
+    width: 50%;
+    height: 400px;
+    margin-top: 17%;
+    float: right;
+}
+
+.textdiv2 {
+    width: 50%;
+    float: left;
+    margin-top: 15%;
+}
+
+.center-block {
+    margin: 0 auto;
+    display: block;
+}
+

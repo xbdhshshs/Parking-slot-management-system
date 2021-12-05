@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SmartRent|Inspect apartment</title>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<section class="jumbotron text-left">
+    <div class="container">
+        <h1 class="jumbotron-heading">Apartment Details</h1>
+        <p class="lead text-muted mb-0"> Here are the detail infos of the Apartment</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-5" th:object="${apartment}" method="POST">
+            <td class="w-25">
+                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="apartment">
+            </td>
+            <p th:text="'Apartment Name: ' + ${apartment.apartmentName}"/>
+            <p th:text="'Hosted by '+ ${apartment.user.userName}"/>
+            <p th:text="'Countrey: ' + ${apartment.countrey}"/>
+            <p th:text="'City: ' + ${apartment.city}"/>
+            <p th:text="'Adress: ' + ${apartment.adress}"/>
+            <p th:text="'Price/Night: ' + ${apartment.ppn}"/>
+            <p th:text="'Number of active bookings: '+ ${valid.size()}"/>
+            <p th:text="${apartment.getRatting()>0 ?apartment.getRatting() : 'No ratting yet'}"  />
+
+
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Check in</th>
+                <th>Check out</th>
+                <th>Who made this reservation</th>
+
+
+
+
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="tempBookings : ${valid}">
+
+                <td th:text="${tempBookings.getCheckIn().toString().substring(0,10)}"/>
+                <td th:text="${tempBookings.getCheckOut().toString().substring(0,10)}"/>
+                <td th:text="${tempBookings.getUser().getUserName()}"/>
+
+            </tr>
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+
+
+    <hr>
+    <a th:href="@{/worker/stays}">Back to Apartment List</a>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
