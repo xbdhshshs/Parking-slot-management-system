@@ -145,7 +145,8 @@ public class AdminController {
         userService.save(user);
         AdminController.u = AdminController.u + 2;
         int r = AdminController.u + 1;
-        return "/ADM/optionsPage";
+
+        return "/ADM/workerList";
     }
 
     @GetMapping(path = "/showFormForAdd")

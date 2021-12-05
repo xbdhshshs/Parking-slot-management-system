@@ -68,6 +68,13 @@
                                 
                               
                             </div>
+
+                        <div sec:authorize="hasAuthority('ROLE_WORKER')">
+
+                            <span class="nav-link"><i class="fas fa-tools"></i>&nbsp;WORKER</span>
+
+
+                        </div>
                     </div>
                 
                 
@@ -121,7 +128,9 @@
                             
                             
                             <div sec:authorize="hasAuthority('ROLE_WORKER')">
-                                <a href="/worker" class="dropdown-item">Logged Worker options</a>
+                                <a th:href="@{/worker/viewProfile}" class="dropdown-item">&nbsp;View profile</a>
+                                <a th:href="@{/worker/showFormForAdd}" class="dropdown-item">&nbsp;Add a Parking Slot</a>
+                                <a th:href="@{/worker/stays}" class="dropdown-item">My Slots</a>
                                 
 
                             </div>

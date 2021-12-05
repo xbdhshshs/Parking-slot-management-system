@@ -59,7 +59,9 @@
         <p class="alert alert-danger" th:if="${#fields.hasErrors('ppn')}" th:errors="*{ppn}"></p>
 
 
-
+        <input type="text" th:field="*{service}"
+               class="form-control mb-4 col-4" placeholder="Services"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('service')}" th:errors="*{service}"></p>
 
 
 

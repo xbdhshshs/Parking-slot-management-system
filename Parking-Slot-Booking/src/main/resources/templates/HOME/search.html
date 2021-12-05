@@ -58,6 +58,7 @@
                     <th>City</th>
                     <th>Address</th>
                     <th>Price/Night</th>
+                    <th>Services</th>
                     <th>Rating</th>
 
 
@@ -77,6 +78,7 @@
                     <td th:text="${tempApartments.city}"/>
                     <td th:text="${tempApartments.adress}"/>
                     <td th:text="${tempApartments.ppn}+' $'"/>
+                    <td th:text="${tempApartments.service}"></td>
                     <td th:text="${tempApartments.getRatting()>0 ? tempApartments.getRatting()+'/5' : 'No ratting yet'}"  />
 
                 </tr>
