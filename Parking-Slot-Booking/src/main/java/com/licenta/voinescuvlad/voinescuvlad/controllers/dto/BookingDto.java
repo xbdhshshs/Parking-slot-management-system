@@ -21,7 +21,7 @@ public class BookingDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkOut;
 
-    private ApartmentDto apartmentDto;
+    private ParkingDto parkingDto;
 
     public int getBookingId() {
         return bookingId;
@@ -47,11 +47,11 @@ public class BookingDto {
         this.checkOut = checkOut;
     }
 
-    public ApartmentDto getApartmentDto() {
-        return apartmentDto;
+    public ParkingDto getParkingDto() {
+        return parkingDto;
     }
 
-    public void setApartmentDto(ApartmentDto apartmentDto) {
-        this.apartmentDto = apartmentDto;
+    public void setParkingDto(ParkingDto parkingDto) {
+        this.parkingDto = parkingDto;
     }
 }

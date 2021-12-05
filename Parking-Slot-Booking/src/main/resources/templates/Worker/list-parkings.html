@@ -43,21 +43,21 @@
         </thead>
 
         <tbody>
-        <tr th:each="tempApartments : ${apartments}">
+        <tr th:each="tempParkings : ${parkings}">
 
             <td class="w-25">
-                <img src="https://st2.depositphotos.com/2704315/8710/v/950/depositphotos_87107884-stock-illustration-vector-parking-flat-cartoon-illustration.jpg" class="img-fluid img-thumbnail" alt="apartment">
+                <img src="https://st2.depositphotos.com/2704315/8710/v/950/depositphotos_87107884-stock-illustration-vector-parking-flat-cartoon-illustration.jpg" class="img-fluid img-thumbnail" alt="parking">
             </td>
-            <td th:text="${tempApartments.apartmentName}"/>
-            <td th:text="${tempApartments.countrey}"/>
-            <td th:text="${tempApartments.city}"/>
-            <td th:text="${tempApartments.adress}"/>
-            <td th:text="${tempApartments.ppn}"/>
-            <td th:text="${tempApartments.status}"/>
+            <td th:text="${tempParkings.parkingName}"/>
+            <td th:text="${tempParkings.countrey}"/>
+            <td th:text="${tempParkings.city}"/>
+            <td th:text="${tempParkings.adress}"/>
+            <td th:text="${tempParkings.ppn}"/>
+            <td th:text="${tempParkings.status}"/>
 
 
             <td text="delete">
-                <a th:href="@{|/worker/delete/${tempApartments.id}|}"
+                <a th:href="@{|/worker/delete/${tempParkings.id}|}"
                    class="btn btn-primary">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>
@@ -65,7 +65,7 @@
 
 
             <td text="info">
-                <a th:href="@{|/worker/viewApartment/${tempApartments.id}|}"
+                <a th:href="@{|/worker/viewParking/${tempParkings.id}|}"
                    class="btn btn-primary">
                     <i class="fas fa-info-circle"></i>
                 </a>
@@ -73,7 +73,7 @@
 
 
             <td text="update">
-                <a th:href="@{|/worker/updateApartment/${tempApartments.id}|}"
+                <a th:href="@{|/worker/updateParking/${tempParkings.id}|}"
                    class="btn btn-primary">
                     <i class="fas fa-pen"></i>
                 </a>

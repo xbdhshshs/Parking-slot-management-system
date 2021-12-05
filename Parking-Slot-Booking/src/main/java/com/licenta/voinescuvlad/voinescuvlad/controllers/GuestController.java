@@ -1,7 +1,7 @@
 package com.licenta.voinescuvlad.voinescuvlad.controllers;
 
-import com.licenta.voinescuvlad.voinescuvlad.entities.Apartment;
-import com.licenta.voinescuvlad.voinescuvlad.services.ApartmentService;
+import com.licenta.voinescuvlad.voinescuvlad.entities.Parking;
+import com.licenta.voinescuvlad.voinescuvlad.services.ParkingService;
 import com.licenta.voinescuvlad.voinescuvlad.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +22,7 @@ public class GuestController {
 
 
     @Autowired
-    private ApartmentService apartmentService;
+    private ParkingService parkingService;
 
     @Autowired
     private UserService userService;
@@ -35,23 +35,23 @@ public class GuestController {
 
     @GetMapping("/")
     public String homePage(Model model) {
-        if (apartmentService.findAllAccepted().size() > 3) {
-            List<Apartment> accepted = apartmentService.findAllAccepted();
-            List<Apartment> sortedByRating = accepted.stream()
-                    .sorted(Comparator.comparing(Apartment::getRatting).reversed())
+        if (parkingService.findAllAccepted().size() > 3) {
+            List<Parking> accepted = parkingService.findAllAccepted();
+            List<Parking> sortedByRating = accepted.stream()
+                    .sorted(Comparator.comparing(Parking::getRatting).reversed())
                     .collect(Collectors.toList());
 
 
             int count = 0;
-            for (Apartment a : sortedByRating) {
+            for (Parking a : sortedByRating) {
                 if (a.getRatting() >= 1)
                     count++;
             }
 
             if (count > 2) {
-                Apartment first = sortedByRating.get(0);
-                Apartment second = sortedByRating.get(1);
-                Apartment third = sortedByRating.get(2);
+                Parking first = sortedByRating.get(0);
+                Parking second = sortedByRating.get(1);
+                Parking third = sortedByRating.get(2);
                 model.addAttribute("first", first);
                 model.addAttribute("second", second);
                 model.addAttribute("third", third);
@@ -83,47 +83,47 @@ public class GuestController {
         return "login";
     }
 
-    @RequestMapping(path = "/viewApartment/{id}")
-    public String viewApartmentById(Model model, @PathVariable("id") int id) {
-        Apartment apartment = apartmentService.findById(id);
-        model.addAttribute(apartment);
+    @RequestMapping(path = "/viewParking/{id}")
+    public String viewParkingById(Model model, @PathVariable("id") int id) {
+        Parking parking = parkingService.findById(id);
+        model.addAttribute(parking);
 
-        return "/HOME/viewApartment";
+        return "/HOME/viewParking";
     }
 
 
-    @GetMapping(value = "/apartments")
+    @GetMapping(value = "/parkings")
     public ModelAndView searchGET(Model model) {
         ModelAndView modelAndView = new ModelAndView();
-        List<Apartment> apartments = apartmentService.findAllAccepted();
-        model.addAttribute("search", apartments);
+        List<Parking> parkings = parkingService.findAllAccepted();
+        model.addAttribute("search", parkings);
         modelAndView.setViewName("/HOME/search");
 
         return modelAndView;
     }
 
-    @GetMapping(value = "/searchApartments")
+    @GetMapping(value = "/searchParkings")
     public String searchPOST(@RequestParam("search") String search, @RequestParam("criteria") String criteria, Model model) {
-        List<Apartment> apartments = null;
+        List<Parking> parkings = null;
         switch (criteria) {
-            case "apartmentPrice": {
-                apartments = apartmentService.findByMaxPrice(search);
-                model.addAttribute("search", apartments);
+            case "parkingPrice": {
+                parkings = parkingService.findByMaxPrice(search);
+                model.addAttribute("search", parkings);
                 break;
             }
-            case "apartmentCity": {
-                apartments = apartmentService.findAllByTheCity(search);
-                model.addAttribute("search", apartments);
+            case "parkingCity": {
+                parkings = parkingService.findAllByTheCity(search);
+                model.addAttribute("search", parkings);
                 break;
             }
             case "none": {
-                apartments = apartmentService.findAllAccepted();
-                model.addAttribute("search", apartments);
+                parkings = parkingService.findAllAccepted();
+                model.addAttribute("search", parkings);
                 break;
             }
-            case "apartmentCountry": {
-                apartments = apartmentService.findAllByTheCountry(search);
-                model.addAttribute("search", apartments);
+            case "parkingCountry": {
+                parkings = parkingService.findAllByTheCountry(search);
+                model.addAttribute("search", parkings);
                 break;
             }
 
@@ -141,12 +141,12 @@ public class GuestController {
     @GetMapping(value = "/stays")
     public ModelAndView searchLUGET(Model model) {
         ModelAndView modelAndView = new ModelAndView();
-        List<Apartment> apartments = null;
+        List<Parking> parkings = null;
         String auth = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<Apartment> ownedApartments = apartmentService.findByUser(userService.findByUsername(auth));
-        apartments = apartmentService.findAllAccepted();
-        apartments.removeAll(ownedApartments);
-        model.addAttribute("search", apartments);
+        List<Parking> ownedParkings = parkingService.findByUser(userService.findByUsername(auth));
+        parkings = parkingService.findAllAccepted();
+        parkings.removeAll(ownedParkings);
+        model.addAttribute("search", parkings);
         modelAndView.setViewName("/HOME/loggedSearch");
 
         return modelAndView;
@@ -155,33 +155,33 @@ public class GuestController {
     @GetMapping(value = "/searchStays")
     public String searchLUPOST(@RequestParam("search") String search, @RequestParam("criteria") String criteria, Model model) {
 
-        List<Apartment> apartments = null;
+        List<Parking> parkings = null;
         String auth = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<Apartment> ownedApartments = apartmentService.findByUser(userService.findByUsername(auth));
+        List<Parking> ownedParkings = parkingService.findByUser(userService.findByUsername(auth));
         switch (criteria) {
-            case "apartmentPrice": {
+            case "parkingPrice": {
 
-                apartments = apartmentService.findByMaxPrice(search);
-                apartments.removeAll(ownedApartments);
-                model.addAttribute("search", apartments);
+                parkings = parkingService.findByMaxPrice(search);
+                parkings.removeAll(ownedParkings);
+                model.addAttribute("search", parkings);
                 break;
             }
-            case "apartmentCity": {
-                apartments = apartmentService.findAllByTheCity(search);
-                apartments.removeAll(ownedApartments);
-                model.addAttribute("search", apartments);
+            case "parkingCity": {
+                parkings = parkingService.findAllByTheCity(search);
+                parkings.removeAll(ownedParkings);
+                model.addAttribute("search", parkings);
                 break;
             }
             case "none": {
-                apartments = apartmentService.findAllAccepted();
-                apartments.removeAll(ownedApartments);
-                model.addAttribute("search", apartments);
+                parkings = parkingService.findAllAccepted();
+                parkings.removeAll(ownedParkings);
+                model.addAttribute("search", parkings);
                 break;
             }
-            case "apartmentCountry": {
-                apartments = apartmentService.findAllByTheCountry(search);
-                apartments.removeAll(ownedApartments);
-                model.addAttribute("search", apartments);
+            case "parkingCountry": {
+                parkings = parkingService.findAllByTheCountry(search);
+                parkings.removeAll(ownedParkings);
+                model.addAttribute("search", parkings);
                 break;
             }
 

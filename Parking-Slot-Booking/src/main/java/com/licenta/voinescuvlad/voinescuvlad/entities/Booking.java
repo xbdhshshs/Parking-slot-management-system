@@ -23,8 +23,8 @@ public class Booking {
     private Date checkOut;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "apartment_id", referencedColumnName = "id")
-    private Apartment apartment;
+    @JoinColumn(name = "parking_id", referencedColumnName = "id")
+    private Parking parking;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -60,12 +60,12 @@ public class Booking {
     }
 
 
-    public Apartment getApartment() {
-        return apartment;
+    public Parking getParking() {
+        return parking;
     }
 
-    public void setApartment(Apartment apartment) {
-        this.apartment = apartment;
+    public void setParking(Parking parking) {
+        this.parking = parking;
     }
 
     public User getUser() {

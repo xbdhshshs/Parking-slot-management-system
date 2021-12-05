@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SmartRent|apartments</title>
+    <title>SmartRent|parkings</title>
 
 
     <!-- Bootstrap CSS -->
@@ -33,9 +33,9 @@
                 <input name="search" id="search" style="height:21px;"/>
                 <select name="criteria" id="criteria" style="height:27px;">
                     <option value="none" id="none">Show all</option>
-                    <option value="apartmentPrice" id="apartmentPrice">Price less than</option>
-                    <option value="apartmentCity" id="apartmentCity">City containing letter(s)</option>
-                    <option value="apartmentCountry" id="apartmentCountry">Country containing letter(s)</option>
+                    <option value="parkingPrice" id="parkingPrice">Price less than</option>
+                    <option value="parkingCity" id="parkingCity">City containing letter(s)</option>
+                    <option value="parkingCountry" id="parkingCountry">Country containing letter(s)</option>
 
                 </select>
                 <button class="regular-action-button" style="display: initial !important;padding: 3px 12px !important;"
@@ -49,7 +49,7 @@
                 <thead class="thead-dark">
                 <tr>
                     <th>ApartPhoto</th>
-                    <th>Apartment Name</th>
+                    <th>Parking Name</th>
                     <th>Countrey</th>
                     <th>City</th>
                     <th>Addres</th>
@@ -63,26 +63,26 @@
                 </thead>
 
                 <tbody>
-                <tr th:each="tempApartments : ${search}">
+                <tr th:each="tempParkings : ${search}">
 
                     <td class="w-25">
-                        <a th:href="@{|/viewApartment/${tempApartments.id}|}">
-                            <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="apartment">
+                        <a th:href="@{|/viewParking/${tempParkings.id}|}">
+                            <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="parking">
                         </a>
                     </td>
-                    <td th:text="${tempApartments.apartmentName}"/>
-                    <td th:text="${tempApartments.countrey}"/>
-                    <td th:text="${tempApartments.city}"/>
-                    <td th:text="${tempApartments.adress}"/>
-                    <td th:text="${tempApartments.ppn}+' $'"/>
+                    <td th:text="${tempParkings.parkingName}"/>
+                    <td th:text="${tempParkings.countrey}"/>
+                    <td th:text="${tempParkings.city}"/>
+                    <td th:text="${tempParkings.adress}"/>
+                    <td th:text="${tempParkings.ppn}+' $'"/>
                     <td text="favorite">
-                        <a th:href="@{'/user/favorites/'+${tempApartments.id}}"
+                        <a th:href="@{'/user/favorites/'+${tempParkings.id}}"
                            class="btn btn-primary">
                             <i class="fa fa-heart" aria-hidden="true"></i>
                         </a>
                     </td>
 
-                    <td th:text="${tempApartments.getRatting()>0 ? tempApartments.getRatting() : 'No ratting yet'}"  />
+                    <td th:text="${tempParkings.getRatting()>0 ? tempParkings.getRatting() : 'No ratting yet'}"  />
 
 
 

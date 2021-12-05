@@ -34,15 +34,15 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public boolean isOverlapping(BookingDto bookingDto, int apartmentId) {
+    public boolean isOverlapping(BookingDto bookingDto, int parkingId) {
 
         boolean isCommon =false;
 
         if (bookingDto.getCheckIn().before(bookingDto.getCheckOut())) {
-            List<Booking> bookingsFromApartment = bookingRepository.findAllByApartmentId(apartmentId);
+            List<Booking> bookingsFromParking = bookingRepository.findAllByParkingId(parkingId);
             List<Date> myDates = calculateDaysBetween(bookingDto);
             List<Date> occupied = new ArrayList<>();
-            for (Booking b : bookingsFromApartment) {
+            for (Booking b : bookingsFromParking) {
                 occupied.addAll(calculateDaysBetween(b));
             }
             isCommon = Collections.disjoint(myDates, occupied);
@@ -98,8 +98,8 @@ public class BookingServiceImpl implements BookingService {
 
 
     @Override
-    public List<Booking> findBookingByTheApartment(int id) {
-        return bookingRepository.findAllByApartmentId(id);
+    public List<Booking> findBookingByTheParking(int id) {
+        return bookingRepository.findAllByParkingId(id);
     }
 
     @Override

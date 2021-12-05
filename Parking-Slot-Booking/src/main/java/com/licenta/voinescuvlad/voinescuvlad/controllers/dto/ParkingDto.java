@@ -2,13 +2,13 @@ package com.licenta.voinescuvlad.voinescuvlad.controllers.dto;
 
 import javax.validation.constraints.*;
 
-public class ApartmentDto {
+public class ParkingDto {
 
-    private int apartmentID;
+    private int parkingID;
 
     @NotEmpty(message = "Enter woker name")
     @Size(min=1, max=20, message="name must be between 1 and 20 characters")
-    private String apartmentName;//worker name
+    private String parkingName;//worker name
 
     @NotEmpty(message = "Please enter car type")
     @Pattern(regexp = "^[A-Za-z]+$",message = "Car type composed only from letters.")
@@ -36,12 +36,12 @@ public class ApartmentDto {
 
     private String status;
 
-    public String getApartmentName() {
-        return apartmentName;
+    public String getParkingName() {
+        return parkingName;
     }
 
-    public void setApartmentName(String apartmentName) {
-        this.apartmentName = apartmentName;
+    public void setParkingName(String parkingName) {
+        this.parkingName = parkingName;
     }
 
     public String getCountrey() {
@@ -85,12 +85,12 @@ public class ApartmentDto {
     }
 
 
-    public int getApartmentID() {
-        return apartmentID;
+    public int getParkingID() {
+        return parkingID;
     }
 
-    public void setApartmentID(int apartmentID) {
-        this.apartmentID = apartmentID;
+    public void setParkingID(int parkingID) {
+        this.parkingID = parkingID;
     }
 
     public String getStatus() {

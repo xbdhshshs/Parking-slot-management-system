@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "apartment")
-public class Apartment {
+@Table(name = "parking")
+public class Parking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "apartment_name")
-    private String apartmentName;
+    @Column(name = "parking_name")
+    private String parkingName;
 
     @Column(name = "countrey")
     private String countrey;
@@ -32,8 +32,8 @@ public class Apartment {
     @Column(name = " price_per_night")
     private double ppn;
 
-    @Column(name = "apartment_image")
-    private byte[] apartmentImage;
+    @Column(name = "parking_image")
+    private byte[] parkingImage;
 
     @Column(name = "status")
     private String status;
@@ -42,38 +42,38 @@ public class Apartment {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToMany(mappedBy = "apartment",
+    @OneToMany(mappedBy = "parking",
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Booking> bookings = new ArrayList<>();
 
     //no argument constructor
-    public Apartment() {
+    public Parking() {
 
     }
 
     //parameterised constructor
-    public Apartment(int id, String apartmentName, String countrey, String service, String city, String adress, double ppn, byte[] apartmentImage, String status, User user) {
+    public Parking(int id, String parkingName, String countrey, String service, String city, String adress, double ppn, byte[] parkingImage, String status, User user) {
         this.id = id;
-        this.apartmentName = apartmentName;
+        this.parkingName = parkingName;
         this.countrey = countrey;
         this.city = city;
         this.service=service;
         this.adress = adress;
         this.ppn = ppn;
-        this.apartmentImage = apartmentImage;
+        this.parkingImage = parkingImage;
         this.status = status;
         this.user = user;
     }
 
 
-    public Apartment(String apartmentName, String countrey, String service, String city, String adress, double ppn, byte[] apartmentImage, String status, User user) {
-        this.apartmentName = apartmentName;
+    public Parking(String parkingName, String countrey, String service, String city, String adress, double ppn, byte[] parkingImage, String status, User user) {
+        this.parkingName = parkingName;
         this.countrey = countrey;
         this.city = city;
         this.service= service;
         this.adress = adress;
         this.ppn = ppn;
-        this.apartmentImage = apartmentImage;
+        this.parkingImage = parkingImage;
         this.status = status;
         this.user = user;
     }
@@ -87,12 +87,12 @@ public class Apartment {
         this.id = id;
     }
 
-    public String getApartmentName() {
-        return apartmentName;
+    public String getParkingName() {
+        return parkingName;
     }
 
-    public void setApartmentName(String apartmentName) {
-        this.apartmentName = apartmentName;
+    public void setParkingName(String parkingName) {
+        this.parkingName = parkingName;
     }
 
     public String getCountrey() {
@@ -136,12 +136,12 @@ public class Apartment {
     }
 
 
-    public byte[] getApartmentImage() {
-        return apartmentImage;
+    public byte[] getParkingImage() {
+        return parkingImage;
     }
 
-    public void setApartmentImage(byte[] apartmentImage) {
-        this.apartmentImage = apartmentImage;
+    public void setParkingImage(byte[] parkingImage) {
+        this.parkingImage = parkingImage;
     }
 
     public User getUser() {
@@ -195,9 +195,9 @@ public class Apartment {
 
     @Override
     public String toString() {
-        return "Apartment{" +
+        return "Parking{" +
                 "id=" + id +
-                ", apartmentName='" + apartmentName + '\'' +
+                ", parkingName='" + parkingName + '\'' +
                 ", countrey='" + countrey + '\'' +
                 ", city='" + city + '\'' +
                 ", service='" + service + '\'' +

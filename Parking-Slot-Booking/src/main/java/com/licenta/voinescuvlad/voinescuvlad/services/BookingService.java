@@ -1,11 +1,8 @@
 package com.licenta.voinescuvlad.voinescuvlad.services;
 
 import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.BookingDto;
-import com.licenta.voinescuvlad.voinescuvlad.entities.Apartment;
 import com.licenta.voinescuvlad.voinescuvlad.entities.Booking;
-import org.apache.catalina.User;
 
-import java.util.Date;
 import java.util.List;
 
 public interface BookingService {
@@ -16,9 +13,9 @@ public interface BookingService {
 
     Booking save(BookingDto bookingDto);
 
-    boolean isOverlapping(BookingDto bookingDto,int apartmentId);
+    boolean isOverlapping(BookingDto bookingDto,int parkingId);
 
-    List<Booking> findBookingByTheApartment(int id);
+    List<Booking> findBookingByTheParking(int id);
 
     List<Booking> findAllByUser(int id);
 

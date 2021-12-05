@@ -25,14 +25,14 @@
     <hr>
     <hr>
 
-    <h3>Curent favorite apartments</h3>
+    <h3>Curent favorite parkings</h3>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
             <th></th>
-            <th>Apartment Name</th>
-            <th>Apartment City</th>
-            <th>Apartment Countrey</th>
+            <th>Parking Name</th>
+            <th>Parking City</th>
+            <th>Parking Countrey</th>
             <th>Price per night</th>
             <th>Rating</th>
             <th>Remove from list</th>
@@ -47,17 +47,17 @@
 
 
             <td class="w-25">
-                <a th:href="@{|/viewApartment/${tempFavs.id}|}">
-                    <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="apartment">
+                <a th:href="@{|/viewParking/${tempFavs.id}|}">
+                    <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="parking">
                 </a>
             </td>
-            <td th:text="${tempFavs.apartmentName}"/>
+            <td th:text="${tempFavs.parkingName}"/>
             <td th:text="${tempFavs.countrey}"/>
             <td th:text="${tempFavs.city}"/>
             <td th:text="${tempFavs.ppn}"/>
             <td th:text="${tempFavs.getRatting()}"/>
             <td text="remove">
-                <a th:href="@{'/user/savedApartments/remove/'+${tempFavs.id}}"
+                <a th:href="@{'/user/savedParkings/remove/'+${tempFavs.id}}"
                    class="btn btn-primary">
                     <i class="fas fa-times-circle"></i>
 

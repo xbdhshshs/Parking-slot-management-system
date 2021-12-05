@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SmartRent|apartments</title>
+    <title>SmartRent|parkings</title>
 
 
     <!-- Bootstrap CSS -->
@@ -30,16 +30,16 @@
     <hr>
 
 
-    <form class="search" action="#" th:action="@{/searchApartments}" th:object="${search}" method="get">
+    <form class="search" action="#" th:action="@{/searchParkings}" th:object="${search}" method="get">
 <!--        <div align="center">-->
 <!--&lt;!&ndash;        <div class="search-container">&ndash;&gt;-->
 <!--&lt;!&ndash;            <label class="header-title">Find By: </label>&ndash;&gt;-->
 <!--&lt;!&ndash;            <input name="search" id="search" style="height:21px;"/>&ndash;&gt;-->
 <!--&lt;!&ndash;            <select name="criteria" id="criteria" style="height:27px;">&ndash;&gt;-->
 <!--&lt;!&ndash;                <option value="none" id="none">Show all</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                <option value="apartmentPrice" id="apartmentPrice">Price less than</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                <option value="apartmentCity" id="apartmentCity">City containing letter(s)</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                <option value="apartmentCountry" id="apartmentCountry">Country containing letter(s)</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option value="parkingPrice" id="parkingPrice">Price less than</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option value="parkingCity" id="parkingCity">City containing letter(s)</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option value="parkingCountry" id="parkingCountry">Country containing letter(s)</option>&ndash;&gt;-->
 
 <!--&lt;!&ndash;            </select>&ndash;&gt;-->
 <!--            <button class="regular-action-button" style="display: initial !important;padding: 3px 12px !important;"-->
@@ -67,21 +67,21 @@
                 </thead>
 
                 <tbody>
-                <tr th:each="tempApartments : ${search}" style="background-color: white">
+                <tr th:each="tempParkings : ${search}" style="background-color: white">
 
                     <td class="w-25">
-                        <a th:href="@{|/viewApartment/${tempApartments.id}|}">
-                            <img src="https://st2.depositphotos.com/7752738/11007/v/600/depositphotos_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-fluid img-thumbnail1" alt="apartment">
+                        <a th:href="@{|/viewParking/${tempParkings.id}|}">
+                            <img src="https://st2.depositphotos.com/7752738/11007/v/600/depositphotos_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-fluid img-thumbnail1" alt="parking">
                         </a>
                     </td>
-                    <td th:text="${tempApartments.apartmentName}"/>
-                    <td th:text="${tempApartments.countrey}"/>
-                    <td th:text="${tempApartments.city}"/>
-                    <td th:text="${tempApartments.adress}"/>
-                    <td th:text="${tempApartments.user.userName}"/>
-                    <td th:text="${tempApartments.ppn}+' $'"/>
-                    <td th:text="${tempApartments.service}"></td>
-<!--                    <td th:text="${tempApartments.getRatting()>0 ? tempApartments.getRatting()+'/5' : 'No ratting yet'}"  />-->
+                    <td th:text="${tempParkings.parkingName}"/>
+                    <td th:text="${tempParkings.countrey}"/>
+                    <td th:text="${tempParkings.city}"/>
+                    <td th:text="${tempParkings.adress}"/>
+                    <td th:text="${tempParkings.user.userName}"/>
+                    <td th:text="${tempParkings.ppn}+' $'"/>
+                    <td th:text="${tempParkings.service}"></td>
+<!--                    <td th:text="${tempParkings.getRatting()>0 ? tempParkings.getRatting()+'/5' : 'No ratting yet'}"  />-->
 
                 </tr>
                 </tbody>

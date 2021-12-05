@@ -24,14 +24,14 @@
 
 
 
-    <h3>Curent owned apartments</h3>
+    <h3>Curent owned parkings</h3>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>Apartment Name</th>
-            <th>Apartment City</th>
-            <th>Apartment Countrey</th>
-            <th>Apartment Adress</th>
+            <th>Parking Name</th>
+            <th>Parking City</th>
+            <th>Parking Countrey</th>
+            <th>Parking Adress</th>
             <th>Starting</th>
             <th>Ending</th>
             <th>Cancel reservation</th>
@@ -45,10 +45,10 @@
         <tbody>
         <tr th:each="tempBookings : ${bookings}">
 
-            <td th:text="${tempBookings.apartment.getApartmentName()}"/>
-            <td th:text="${tempBookings.apartment.getCity()}"/>
-            <td th:text="${tempBookings.apartment.getCountrey()}"/>
-            <td th:text="${tempBookings.apartment.getAdress()}"/>
+            <td th:text="${tempBookings.parking.getParkingName()}"/>
+            <td th:text="${tempBookings.parking.getCity()}"/>
+            <td th:text="${tempBookings.parking.getCountrey()}"/>
+            <td th:text="${tempBookings.parking.getAdress()}"/>
             <td th:text="${tempBookings.checkIn.toString().substring(0,10)}"/>
             <td th:text="${tempBookings.checkOut.toString().substring(0,10)}"/>
 

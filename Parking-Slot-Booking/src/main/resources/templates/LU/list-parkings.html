@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SmartRent|My apartments</title>
+    <title>SmartRent|My parkings</title>
 
 
     <!-- Bootstrap CSS -->
@@ -43,21 +43,21 @@
         </thead>
 
         <tbody>
-        <tr th:each="tempApartments : ${apartments}" style="background-color: white; color:black">
+        <tr th:each="tempParkings : ${parkings}" style="background-color: white; color:black">
 
             <td class="w-25">
-                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="apartment">
+                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="parking">
             </td>
-            <td th:text="${tempApartments.apartmentName}"/>
-            <td th:text="${tempApartments.countrey}"/>
-            <td th:text="${tempApartments.city}"/>
-            <td th:text="${tempApartments.adress}"/>
-            <td th:text="${tempApartments.ppn}"/>
-            <td th:text="${tempApartments.status}"/>
+            <td th:text="${tempParkings.parkingName}"/>
+            <td th:text="${tempParkings.countrey}"/>
+            <td th:text="${tempParkings.city}"/>
+            <td th:text="${tempParkings.adress}"/>
+            <td th:text="${tempParkings.ppn}"/>
+            <td th:text="${tempParkings.status}"/>
 
 
             <td text="delete">
-                <a th:href="@{|/user/delete/${tempApartments.id}|}"
+                <a th:href="@{|/user/delete/${tempParkings.id}|}"
                    class="btn btn-primary">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>
@@ -65,7 +65,7 @@
 
 
             <td text="info">
-                <a th:href="@{|/user/viewApartment/${tempApartments.id}|}"
+                <a th:href="@{|/user/viewParking/${tempParkings.id}|}"
                    class="btn btn-primary">
                     <i class="fas fa-info-circle"></i>
                 </a>
@@ -73,7 +73,7 @@
 
 
             <td text="update">
-                <a th:href="@{|/user/updateApartment/${tempApartments.id}|}"
+                <a th:href="@{|/user/updateParking/${tempParkings.id}|}"
                    class="btn btn-primary">
                     <i class="fas fa-pen"></i>
                 </a>

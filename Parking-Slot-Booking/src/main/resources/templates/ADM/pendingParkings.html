@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SmartRent|Admin pending apartments</title>
+    <title>SmartRent|Admin pending parkings</title>
 
 
     <!-- Bootstrap CSS -->
@@ -30,36 +30,36 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>Apartment Photo</th>
-            <th>Apartment Name</th>
+            <th>Parking Photo</th>
+            <th>Parking Name</th>
             <th>Countrey</th>
             <th>City</th>
             <th>Addres</th>
             <th>Price/Night</th>
-            <th>Check apartment</th>
+            <th>Check parking</th>
 
 
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="tempApartments : ${apartments}" style="background-color:white; color:black">
+        <tr th:each="tempParkings : ${parkings}" style="background-color:white; color:black">
 
             <td class="w-25">
-				<a href="/viewapartments/{id}">
+				<a href="/viewparkings/{id}">
                 <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg"
-                     class="img-fluid img-thumbnail" alt="apartment"></a>
+                     class="img-fluid img-thumbnail" alt="parking"></a>
 
             </td>
-            <td th:text="${tempApartments.apartmentName}"/>
-            <td th:text="${tempApartments.countrey}"/>
-            <td th:text="${tempApartments.city}"/>
-            <td th:text="${tempApartments.adress}"/>
-            <td th:text="${tempApartments.ppn}+' $'"/>
+            <td th:text="${tempParkings.parkingName}"/>
+            <td th:text="${tempParkings.countrey}"/>
+            <td th:text="${tempParkings.city}"/>
+            <td th:text="${tempParkings.adress}"/>
+            <td th:text="${tempParkings.ppn}+' $'"/>
 
 
             <td text="info">
-                <a th:href="@{|/admin/checkApartment/${tempApartments.id}|}"
+                <a th:href="@{|/admin/checkParking/${tempParkings.id}|}"
                    class="btn btn-primary">
                     <i class="fas fa-info-circle"></i>
                 </a>

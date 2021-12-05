@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SmartRent|Update apartment</title>
+    <title>SmartRent|Update parking</title>
 
 
     <!-- Bootstrap CSS -->
@@ -20,20 +20,21 @@
 <body>
 
 <div th:insert="~{/fragments/header :: header}"></div>
-
+<br><br>
 <div align="center">
-    <h1>Edit Apartment Info</h1>
+    <h1>Edit Parking Slot</h1>
     <br/>
 
 
     <div class="modal-body">
-        <form th:action="@{'/worker/edit-apartment'}" method="post" th:object="${apartment}">
-            <input type="hidden" id="id" th:field="${apartment.apartmentID}" name="id">
+        <form th:action="@{'/user/edit-parking'}" method="post" th:object="${parking}"
+        style="background-color: black; padding:20px; color:white; background-size:100px 100px">
+            <input type="hidden" id="id" th:field="${parking.parkingID}" name="id">
 
             <div class="col-md-6" style="margin-bottom: 2%">
                 <div class="md-form mb-0">
                     <label for="New name" class="">New name</label>
-                    <input th:field="${apartment.apartmentName}" type="text" id="New name" name="New name"
+                    <input th:field="${parking.parkingName}" type="text" id="New name" name="New name"
                            class="form-control">
                 </div>
             </div>
@@ -41,19 +42,19 @@
             <div class="col-md-6" style="margin-bottom: 2%">
                 <div class="md-form mb-0">
                     <label for="New price/night" class="">New price/night</label>
-                    <input th:field="${apartment.ppn}" type="text" id="New price/night" name="New price/night"
+                    <input th:field="${parking.ppn}" type="text" id="New price/night" name="New price/night"
                            class="form-control">
                 </div>
             </div>
 
-            <input type="hidden" id="countrey" th:field="${apartment.countrey}" name="id">
-            <input type="hidden" id="city" th:field="${apartment.city}" name="id">
-            <input type="hidden" id="status" th:field="${apartment.status}" name="id">
-            <input type="hidden" id="adress" th:field="${apartment.adress}" name="id">
+            <input type="hidden" id="countrey" th:field="${parking.countrey}" name="id">
+            <input type="hidden" id="city" th:field="${parking.city}" name="id">
+            <input type="hidden" id="status" th:field="${parking.status}" name="id">
+            <input type="hidden" id="adress" th:field="${parking.adress}" name="id">
 
             <div class="text-center">
-                <button type="submit" class="empty-button btn btn-default">
-                    Edit
+                <button type="submit" class="empty-button btn btn-default" style="background-color: white!important">
+                    Update
                 </button>
 
             </div>
@@ -65,7 +66,6 @@
 </div>
 
 </div>
-
 
 
 

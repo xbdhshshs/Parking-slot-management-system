@@ -1,13 +1,13 @@
 package com.licenta.voinescuvlad.voinescuvlad.controllers;
 
-import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.ApartmentDto;
+import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.ParkingDto;
 import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.UserRegistrationDto;
-import com.licenta.voinescuvlad.voinescuvlad.entities.Apartment;
+import com.licenta.voinescuvlad.voinescuvlad.entities.Parking;
 import com.licenta.voinescuvlad.voinescuvlad.entities.Booking;
 import com.licenta.voinescuvlad.voinescuvlad.entities.Role;
 import com.licenta.voinescuvlad.voinescuvlad.entities.User;
 import com.licenta.voinescuvlad.voinescuvlad.repositories.RoleRepository;
-import com.licenta.voinescuvlad.voinescuvlad.services.ApartmentService;
+import com.licenta.voinescuvlad.voinescuvlad.services.ParkingService;
 import com.licenta.voinescuvlad.voinescuvlad.services.BookingService;
 import com.licenta.voinescuvlad.voinescuvlad.services.DtoMapping;
 import com.licenta.voinescuvlad.voinescuvlad.services.UserService;
@@ -31,7 +31,7 @@ public class AdminController {
     public static int i = 4;//keep it 0 at the start of every rerun provided the database is empty
     public static int u = 33;//keep it 0 at the start of every rerun provided the database is empty
     @Autowired
-    private ApartmentService apartmentService;
+    private ParkingService parkingService;
 
     @Autowired
     private UserService userService;
@@ -67,20 +67,20 @@ public class AdminController {
     }
 
     @PostMapping("/save")
-    public String addApartment(@ModelAttribute("apartment") @Valid ApartmentDto apartment, BindingResult result, RedirectAttributes attr) {
+    public String addParking(@ModelAttribute("parking") @Valid ParkingDto parking, BindingResult result, RedirectAttributes attr) {
 
 
         if (result.hasErrors()) {
 
-            attr.addFlashAttribute("org.springframework.validation.BindingResult.apartment",
+            attr.addFlashAttribute("org.springframework.validation.BindingResult.parking",
                     result);
-            attr.addFlashAttribute("apartment", apartment);
+            attr.addFlashAttribute("parking", parking);
             return "redirect:/ADM/showFormForAdd";
         }
 
-        apartmentService.save(apartment);
+        parkingService.save(parking);
         AdminController.i++;
-        return "redirect:/admin/checkApartment/" + AdminController.i;
+        return "redirect:/admin/checkParking/" + AdminController.i;
     }
 
     //USER
@@ -164,14 +164,14 @@ public class AdminController {
     @GetMapping(path = "/showFormForAdd")
     public String showFormForAdd(Model theModel) {
 
-        ApartmentDto apartmentDto = new ApartmentDto();
+        ParkingDto parkingDto = new ParkingDto();
 
 
-        if (!theModel.containsAttribute("apartment")) {
-            theModel.addAttribute("apartment", apartmentDto);
+        if (!theModel.containsAttribute("parking")) {
+            theModel.addAttribute("parking", parkingDto);
         }
 
-        return "/ADM/apartment-form";
+        return "/ADM/parking-form";
     }
 
     @RequestMapping(path = "/delete/{id}")
@@ -184,10 +184,10 @@ public class AdminController {
     @RequestMapping(path = "/viewUser/{id}")
     public String viewUserById(Model model, @PathVariable("id") int id) {
         User user = userService.findById(id);
-        List<Apartment> apartments = apartmentService.findByUser(user);
+        List<Parking> parkings = parkingService.findByUser(user);
         List<String> apartNames = new ArrayList<String>();
-        for (int i = 0; i < apartments.size(); i++) {
-            apartNames.add(apartments.get(i).getApartmentName());
+        for (int i = 0; i < parkings.size(); i++) {
+            apartNames.add(parkings.get(i).getParkingName());
         }
         model.addAttribute("user", user);
         model.addAttribute("apartNames", apartNames);
@@ -196,88 +196,88 @@ public class AdminController {
     }
 
 
-    //APARTMENT
+    //Parking
 
-    @RequestMapping(path = "/checkApartment/{id}")
-    public String reviewApartment(Model model, @PathVariable("id") int id) throws IOException {
-        Apartment apartment = apartmentService.findById(id);
+    @RequestMapping(path = "/checkParking/{id}")
+    public String reviewParking(Model model, @PathVariable("id") int id) throws IOException {
+        Parking parking = parkingService.findById(id);
         String acceptedStatus = "accepted";
         String declinedStatus = "declined";
-        model.addAttribute("apartment", apartment);
+        model.addAttribute("parking", parking);
         model.addAttribute("accepted", acceptedStatus);
         model.addAttribute("declined", declinedStatus);
 
-        return "/ADM/reviewApartment";
+        return "/ADM/reviewParking";
     }
     ///////////////
-    @RequestMapping(path = "/deleteApartment/{id}")
-    public String deleteApartment(Model model, @PathVariable("id") int id) throws IOException {
-        Apartment apartment = apartmentService.findById(id);
-        model.addAttribute("apartment", apartment);
-        apartmentService.delete(apartment);
-        return "redirect:/admin/deleteApartments";
+    @RequestMapping(path = "/deleteParking/{id}")
+    public String deleteParking(Model model, @PathVariable("id") int id) throws IOException {
+        Parking parking = parkingService.findById(id);
+        model.addAttribute("parking", parking);
+        parkingService.delete(parking);
+        return "redirect:/admin/deleteParkings";
     }
 
 
-    @GetMapping("/pendingApartments")
-    public String listPendingApartments(Model theModel) {
-        List<Apartment> theApartments = apartmentService.findAllApartmentsByStatus("pending");
+    @GetMapping("/pendingParkings")
+    public String listPendingParkings(Model theModel) {
+        List<Parking> theParkings = parkingService.findAllParkingsByStatus("pending");
 
-        if (theApartments.size() == 0)
+        if (theParkings.size() == 0)
             return "/ADM/empty";
 
-        theModel.addAttribute("apartments", theApartments);
+        theModel.addAttribute("parkings", theParkings);
 
-        return "/ADM/pendingApartments";
+        return "/ADM/pendingParkings";
 
 
     }
     ////////
-    @GetMapping("/deleteApartments")
-    public String listApartmentstodelete(Model theModel) {
-        List<Apartment> theApartments = apartmentService.findAllApartmentsByStatus("accepted");
+    @GetMapping("/deleteParkings")
+    public String listParkingstodelete(Model theModel) {
+        List<Parking> theParkings = parkingService.findAllParkingsByStatus("accepted");
 
-        if (theApartments.size() == 0)
+        if (theParkings.size() == 0)
             return "/ADM/empty";
 
-        theModel.addAttribute("apartments", theApartments);
+        theModel.addAttribute("parkings", theParkings);
 
-        return "/ADM/deleteapartment";
+        return "/ADM/deleteparking";
 
     }
 
     @PostMapping("/saveStatus")
-    public String updateApartmentStatus(@ModelAttribute("apartmentId") int apartmentId, @ModelAttribute("apartmentStatus") String status) {
-        Apartment apartment = apartmentService.findById(apartmentId);
-        ApartmentDto dto = converter.getApartmentDtoFromApartment(apartment);
+    public String updateParkingStatus(@ModelAttribute("parkingId") int parkingId, @ModelAttribute("parkingStatus") String status) {
+        Parking parking = parkingService.findById(parkingId);
+        ParkingDto dto = converter.getParkingDtoFromParking(parking);
         dto.setStatus(status);
-        if (apartment.getUser().getUserName() == "admin") {
-            apartment.setStatus("accepted");
+        if (parking.getUser().getUserName() == "admin") {
+            parking.setStatus("accepted");
         }
-        apartmentService.updateStatus(dto);
+        parkingService.updateStatus(dto);
 
-        return "redirect:/admin/pendingApartments";
+        return "redirect:/admin/pendingParkings";
     }
 
 
     //STATISTICS
 
-    @RequestMapping(path = "/statistics")
-    public String statistics(Model model) {
-        List<Booking> bookings = bookingService.findAll();
-        int numberOfBookings = bookings.size();
-        int totalIncome = 0;
-        for (Booking b : bookings) {
-            long diff = b.getCheckOut().getTime() - b.getCheckIn().getTime();
-            long diffDays = diff / (24 * 60 * 60 * 1000) + 1;
-            int SumDays = (int) diffDays;
-            totalIncome += b.getApartment().getPpn() * SumDays;
-        }
-        model.addAttribute("bookingsNumber", numberOfBookings);
-        model.addAttribute("totalIncome", totalIncome);
-
-        return "/ADM/statistics";
-    }
+//    @RequestMapping(path = "/statistics")
+//    public String statistics(Model model) {
+//        List<Booking> bookings = bookingService.findAll();
+//        int numberOfBookings = bookings.size();
+//        int totalIncome = 0;
+//        for (Booking b : bookings) {
+//            long diff = b.getCheckOut().getTime() - b.getCheckIn().getTime();
+//            long diffDays = diff / (24 * 60 * 60 * 1000) + 1;
+//            int SumDays = (int) diffDays;
+//            totalIncome += b.getParking().getPpn() * SumDays;
+//        }
+//        model.addAttribute("bookingsNumber", numberOfBookings);
+//        model.addAttribute("totalIncome", totalIncome);
+//
+//        return "/ADM/statistics";
+//    }
 
     @RequestMapping("/chart")
     public String generateGraph(Model model) {
@@ -361,7 +361,7 @@ public class AdminController {
         long diff = booking.getCheckOut().getTime() - booking.getCheckIn().getTime();
         long diffDays = diff / (24 * 60 * 60 * 1000) + 1;
         int SumDays = (int) diffDays;
-        sum = booking.getApartment().getPpn() * SumDays;
+        sum = booking.getParking().getPpn() * SumDays;
         return sum;
     }
 
@@ -472,10 +472,10 @@ public class AdminController {
     @RequestMapping(path = "/viewWorker/{id}")
     public String viewWorkerById(Model model, @PathVariable("id") int id) {
         User user = userService.findById(id);
-        List<Apartment> apartments = apartmentService.findByUser(user);
+        List<Parking> parkings = parkingService.findByUser(user);
         List<String> apartNames = new ArrayList<String>();
-        for (int i = 0; i < apartments.size(); i++) {
-            apartNames.add(apartments.get(i).getApartmentName());
+        for (int i = 0; i < parkings.size(); i++) {
+            apartNames.add(parkings.get(i).getParkingName());
         }
         model.addAttribute("user", user);
         model.addAttribute("apartNames", apartNames);

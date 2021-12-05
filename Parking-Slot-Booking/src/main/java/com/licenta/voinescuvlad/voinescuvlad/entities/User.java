@@ -34,7 +34,7 @@ public class User {
 
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Apartment> apartments = new ArrayList<>();
+    private List<Parking> parkings = new ArrayList<>();
 
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL, orphanRemoval = true)
@@ -57,9 +57,9 @@ public class User {
     }
 
     public double getRatting() {
-        List<Apartment> allApartments = this.getApartments();
+        List<Parking> allParkings = this.getParkings();
         List<Booking> ratedBooking = new ArrayList<>();
-        for (Apartment a : allApartments) {
+        for (Parking a : allParkings) {
             for (Booking b : a.getBookings()) {
                 if (b.getRating() != null)
                     ratedBooking.add(b);
@@ -168,12 +168,12 @@ public class User {
         this.userImage = userImage;
     }
 
-    public List<Apartment> getApartments() {
-        return apartments;
+    public List<Parking> getParkings() {
+        return parkings;
     }
 
-    public void setApartments(List<Apartment> apartments) {
-        this.apartments = apartments;
+    public void setParkings(List<Parking> parkings) {
+        this.parkings = parkings;
     }
 
 

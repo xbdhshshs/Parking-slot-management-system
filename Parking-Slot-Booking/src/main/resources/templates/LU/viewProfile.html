@@ -43,7 +43,7 @@
     border:solid black 1px;;border-radius: 20px!important">
         <div class="row" >
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSClqxVXOq5xQWJNkEPeVlI8wzCeCWjRj9yXK59aDuh5to_51lPmLrMsMtspPsH5pXZf4k&usqp=CAU"
-	            class="img-fluid img-thumbnail"  alt="apartment" >
+	            class="img-fluid img-thumbnail"  alt="parking" >
             <div class="col-md-5" th:object="${user}" method="POST">
             <table >
             	<tr>
@@ -64,7 +64,7 @@
             	</tr>
             	<tr>
             		<td style="font-weight: bolder;"><p th:text="'Active parking Slots:'"></p></td>
-            		<td><p th:text="${activeApartments}"></p></td>
+            		<td><p th:text="${activeParkings}"></p></td>
             	</tr>
 <!--                <tr>-->
 <!--            		<td style="font-weight: bolder;"><p th:text="'Money received: '"></p></td>-->

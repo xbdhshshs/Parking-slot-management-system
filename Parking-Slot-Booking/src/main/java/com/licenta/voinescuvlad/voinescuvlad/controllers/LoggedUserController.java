@@ -1,12 +1,11 @@
 package com.licenta.voinescuvlad.voinescuvlad.controllers;
 
-import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.ApartmentDto;
+import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.ParkingDto;
 import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.BookingDto;
-import com.licenta.voinescuvlad.voinescuvlad.entities.Apartment;
+import com.licenta.voinescuvlad.voinescuvlad.entities.Parking;
 import com.licenta.voinescuvlad.voinescuvlad.entities.Booking;
-import com.licenta.voinescuvlad.voinescuvlad.entities.Rating;
 import com.licenta.voinescuvlad.voinescuvlad.entities.User;
-import com.licenta.voinescuvlad.voinescuvlad.services.ApartmentService;
+import com.licenta.voinescuvlad.voinescuvlad.services.ParkingService;
 import com.licenta.voinescuvlad.voinescuvlad.services.BookingService;
 import com.licenta.voinescuvlad.voinescuvlad.services.DtoMapping;
 import com.licenta.voinescuvlad.voinescuvlad.services.UserService;
@@ -32,7 +31,7 @@ import java.util.List;
 public class LoggedUserController {
 
     @Autowired
-    private ApartmentService apartmentService;
+    private ParkingService parkingService;
 
     @Autowired
     private UserService userService;
@@ -77,57 +76,57 @@ public class LoggedUserController {
             long diff = b.getCheckOut().getTime() - b.getCheckIn().getTime();
             long diffDays = diff / (24 * 60 * 60 * 1000) + 1;
             int SumDays = (int) diffDays;
-            totalIncome += b.getApartment().getPpn() * SumDays;
+            totalIncome += b.getParking().getPpn() * SumDays;
         }
         int size = myBookings.size();
         model.addAttribute("size", size);
         model.addAttribute("sum", totalIncome);
-        List<Apartment> activeApartments = apartmentService.findAllAcceptedByUser(user);
+        List<Parking> activeParkings = parkingService.findAllAcceptedByUser(user);
         int guestIncome = 0;
         int bookingsSize = 0;
-        for (Apartment a : activeApartments) {
+        for (Parking a : activeParkings) {
             for (Booking b : a.getBookings()) {
                 long diff = b.getCheckOut().getTime() - b.getCheckIn().getTime();
                 long diffDays = diff / (24 * 60 * 60 * 1000) + 1;
                 int SumDays = (int) diffDays;
-                guestIncome += b.getApartment().getPpn() * SumDays;
+                guestIncome += b.getParking().getPpn() * SumDays;
                 bookingsSize++;
             }
 
         }
 
 
-        model.addAttribute("activeApartments", activeApartments.size());
+        model.addAttribute("activeParkings", activeParkings.size());
         model.addAttribute("guestIncome", guestIncome);
         model.addAttribute("reservations", bookingsSize);
 
         return "/LU/viewProfile";
     }
 
-    //APARTMENT
+    //Parking
 
     @GetMapping("/stays")
-    public String ownedApartments(Model theModel) {
+    public String ownedParkings(Model theModel) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         User user = userService.findByUsername(name);
-        List<Apartment> theApartments = apartmentService.findByUser(user);
-        if (theApartments.size() == 0)
+        List<Parking> theParkings = parkingService.findByUser(user);
+        if (theParkings.size() == 0)
             return "/LU/empty";
         else {
-            theModel.addAttribute("apartments", theApartments);
+            theModel.addAttribute("parkings", theParkings);
             theModel.addAttribute("theUser", user);
 
-            return "/LU/list-apartments";
+            return "/LU/list-parkings";
         }
     }
 
-    @RequestMapping(path = "/viewApartment/{id}")
-    public String viewApartmentById(Model model, @PathVariable("id") int id) {
-        Apartment apartment = apartmentService.findById(id);
-        model.addAttribute(apartment);
-        List<Booking> activeBookings = bookingService.findBookingByTheApartment(id);
+    @RequestMapping(path = "/viewParking/{id}")
+    public String viewParkingById(Model model, @PathVariable("id") int id) {
+        Parking parking = parkingService.findById(id);
+        model.addAttribute(parking);
+        List<Booking> activeBookings = bookingService.findBookingByTheParking(id);
         Date actual = new Date();
         List<Booking> valid = new ArrayList<>();
         for (Booking b : activeBookings) {
@@ -136,14 +135,14 @@ public class LoggedUserController {
         }
         model.addAttribute("valid", valid);
 
-        return "/LU/viewApartment";
+        return "/LU/viewParking";
     }
 
     @RequestMapping(path = "/delete/{id}")
-    public String deleteApartmentById(Model model, @PathVariable("id") int id) {
-        Apartment apartment = apartmentService.findById(id);
+    public String deleteParkingById(Model model, @PathVariable("id") int id) {
+        Parking parking = parkingService.findById(id);
 
-        apartmentService.delete(apartment);
+        parkingService.delete(parking);
 
 
         return "redirect:/user/stays";
@@ -152,54 +151,54 @@ public class LoggedUserController {
     @GetMapping(path = "/showFormForAdd")
     public String showFormForAdd(Model theModel) {
 
-        ApartmentDto apartmentDto = new ApartmentDto();
+        ParkingDto parkingDto = new ParkingDto();
 
 
-        if (!theModel.containsAttribute("apartment")) {
-            theModel.addAttribute("apartment", apartmentDto);
+        if (!theModel.containsAttribute("parking")) {
+            theModel.addAttribute("parking", parkingDto);
         }
 
-        return "/LU/apartment-form";
+        return "/LU/parking-form";
     }
 
     @PostMapping("/save")
-    public String addApartment(@ModelAttribute("apartment") @Valid ApartmentDto apartment, BindingResult result, RedirectAttributes attr) {
+    public String addParking(@ModelAttribute("parking") @Valid ParkingDto parking, BindingResult result, RedirectAttributes attr) {
 
 
         if (result.hasErrors()) {
 
-            attr.addFlashAttribute("org.springframework.validation.BindingResult.apartment",
+            attr.addFlashAttribute("org.springframework.validation.BindingResult.parking",
                     result);
-            attr.addFlashAttribute("apartment", apartment);
+            attr.addFlashAttribute("parking", parking);
             return "redirect:/user/showFormForAdd";
         }
 
 
-        apartmentService.save(apartment);
+        parkingService.save(parking);
         AdminController.i++;
         return "redirect:/user/stays";
     }
 
 
-    @GetMapping(value = "/updateApartment/{id}")
-    public String showEditApartmentForm(Model model, @PathVariable("id") int id) {
-        Apartment apartment = apartmentService.findById(id);
-        ApartmentDto dto = converter.getApartmentDtoFromApartment(apartment);
-        model.addAttribute("apartment", dto);
+    @GetMapping(value = "/updateParking/{id}")
+    public String showEditParkingForm(Model model, @PathVariable("id") int id) {
+        Parking parking = parkingService.findById(id);
+        ParkingDto dto = converter.getParkingDtoFromParking(parking);
+        model.addAttribute("parking", dto);
 
-        return "/LU/updateApartment";
+        return "/LU/updateParking";
     }
 
-    @PostMapping("edit-apartment")
-    public String saveEditForApartment(@ModelAttribute ApartmentDto dto) {
-        apartmentService.update(dto);
+    @PostMapping("edit-parking")
+    public String saveEditForParking(@ModelAttribute ParkingDto dto) {
+        parkingService.update(dto);
 
         return "redirect:/user/stays";
     }
 
     @RequestMapping(value = "/favorites/{id}")
     public String addToFavorites(@PathVariable("id") int id) {
-        Apartment fav = apartmentService.findById(id);
+        Parking fav = parkingService.findById(id);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         User currentUser = userService.findByUsername(name);
@@ -214,7 +213,7 @@ public class LoggedUserController {
 
     }
 
-    @GetMapping(value = "/savedApartments")
+    @GetMapping(value = "/savedParkings")
     public String myFavorites(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
@@ -222,18 +221,18 @@ public class LoggedUserController {
         if (currentUser.getFavorites().size() == 0)
             return "/LU/empty";
         else {
-            List<Apartment> favorites = new ArrayList<>();
+            List<Parking> favorites = new ArrayList<>();
             for (int i : currentUser.getFavorites()) {
-                favorites.add(apartmentService.findById(i));
+                favorites.add(parkingService.findById(i));
             }
             model.addAttribute("favorites", favorites);
             return "/LU/favoriteList";
         }
     }
 
-    @GetMapping(value = "/savedApartments/remove/{id}")
+    @GetMapping(value = "/savedParkings/remove/{id}")
     public String deleteFavorites(@PathVariable("id") int id) {
-        Apartment fav = apartmentService.findById(id);
+        Parking fav = parkingService.findById(id);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         User currentUser = userService.findByUsername(name);
@@ -247,7 +246,7 @@ public class LoggedUserController {
         userService.update(currentUser);
 
 
-        return "redirect:/user/savedApartments";
+        return "redirect:/user/savedParkings";
     }
 
 
@@ -279,11 +278,11 @@ public class LoggedUserController {
         return "redirect:/user/myBookings";
     }
 
-    @RequestMapping(path = "/viewApartment/{id}/calendar")
-    public String viewApartmentBookingCalendar(Model model, @PathVariable("id") int id) {
-        List<Booking> bookings = bookingService.findBookingByTheApartment(id);
-        Apartment theApartment = apartmentService.findById(id);
-        int theId = theApartment.getId();
+    @RequestMapping(path = "/viewParking/{id}/calendar")
+    public String viewParkingBookingCalendar(Model model, @PathVariable("id") int id) {
+        List<Booking> bookings = bookingService.findBookingByTheParking(id);
+        Parking theParking = parkingService.findById(id);
+        int theId = theParking.getId();
         if (bookings.size() == 0) {
             model.addAttribute("id", theId);
 
@@ -297,11 +296,11 @@ public class LoggedUserController {
         }
     }
 
-    @GetMapping(path = "/viewApartment/{id}/calendar/showFormForAdd")
+    @GetMapping(path = "/viewParking/{id}/calendar/showFormForAdd")
     public String showFormForAddBooking(Model theModel, @PathVariable("id") int id) {
         BookingDto bookingDto = new BookingDto();
-        Apartment apartment = apartmentService.findById(id);
-        theModel.addAttribute("apartment", apartment);
+        Parking parking = parkingService.findById(id);
+        theModel.addAttribute("parking", parking);
         if (!theModel.containsAttribute("booking")) {
             theModel.addAttribute("booking", bookingDto);
         }
@@ -317,7 +316,7 @@ public class LoggedUserController {
             attr.addFlashAttribute("org.springframework.validation.BindingResult.booking",
                     result);
             attr.addFlashAttribute("booking", booking);
-            return "redirect:/user/viewApartment/" + id + "/calendar/showFormForAdd";
+            return "redirect:/user/viewParking/" + id + "/calendar/showFormForAdd";
         }
 
         if (bookingService.isOverlapping(booking, id) == false) {
@@ -325,9 +324,9 @@ public class LoggedUserController {
             return "/LU/errorBookingForm";
 
         } else {
-            Apartment apartment = apartmentService.findById(id);
-            ApartmentDto dto = converter.getApartmentDtoFromApartment(apartment);
-            booking.setApartmentDto(dto);
+            Parking parking = parkingService.findById(id);
+            ParkingDto dto = converter.getParkingDtoFromParking(parking);
+            booking.setParkingDto(dto);
             bookingService.save(booking);
 
 
@@ -338,14 +337,14 @@ public class LoggedUserController {
 
 
             emailService.sendBookingInfoForCustomer(user.getUserName(), user.getEmail(), booking.getCheckIn().toString().substring(0, 10),
-                    booking.getCheckOut().toString().substring(0, 10), apartment.getApartmentName(), apartment.
-                            getCity(), apartment.getCountrey(), apartment.getAdress());
+                    booking.getCheckOut().toString().substring(0, 10), parking.getParkingName(), parking.
+                            getCity(), parking.getCountrey(), parking.getAdress());
 
-//            emailService.sendBookingAlertToGuest(apartment.getUser().getUserName(), apartment.getUser().getEmail(),
-//                    apartment.getApartmentName(), booking.getCheckIn().toString().substring(0, 10), booking.getCheckOut().toString().substring(0, 10));
+//            emailService.sendBookingAlertToGuest(parking.getUser().getUserName(), parking.getUser().getEmail(),
+//                    parking.getParkingName(), booking.getCheckIn().toString().substring(0, 10), booking.getCheckOut().toString().substring(0, 10));
 
 
-            return "redirect:/user/viewApartment/" + id + "/calendar";
+            return "redirect:/user/viewParking/" + id + "/calendar";
 
         }
     }

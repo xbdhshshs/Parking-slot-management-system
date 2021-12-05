@@ -1,9 +1,9 @@
 package com.licenta.voinescuvlad.voinescuvlad.services;
 
-import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.ApartmentDto;
+import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.ParkingDto;
 import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.BookingDto;
 import com.licenta.voinescuvlad.voinescuvlad.controllers.dto.UserRegistrationDto;
-import com.licenta.voinescuvlad.voinescuvlad.entities.Apartment;
+import com.licenta.voinescuvlad.voinescuvlad.entities.Parking;
 import com.licenta.voinescuvlad.voinescuvlad.entities.Booking;
 import com.licenta.voinescuvlad.voinescuvlad.entities.Role;
 import com.licenta.voinescuvlad.voinescuvlad.entities.User;
@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class DtoMapping {
 
     @Autowired
-    private ApartmentService apartmentService;
+    private ParkingService parkingService;
 
     @Autowired
     private UserService userService;
@@ -28,56 +28,56 @@ public class DtoMapping {
 
 
     //AICI
-    public Apartment getApartmentFromApartmentDto(ApartmentDto apartmentDto)
+    public Parking getParkingFromParkingDto(ParkingDto parkingDto)
     {
-        Apartment apartment = new Apartment();
-        apartment.setId(apartmentDto.getApartmentID());
-        apartment.setApartmentName(apartmentDto.getApartmentName());
-        apartment.setCountrey(apartmentDto.getCountrey());
-        apartment.setAdress(apartmentDto.getAdress());
-        apartment.setCity(apartmentDto.getCity());
-        apartment.setStatus(apartmentDto.getStatus());
-        apartment.setApartmentImage(null);
-        apartment.setPpn(apartmentDto.getPpn());
-        apartment.setService(apartmentDto.getService());
-        apartment.setUser(userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        Parking parking = new Parking();
+        parking.setId(parkingDto.getParkingID());
+        parking.setParkingName(parkingDto.getParkingName());
+        parking.setCountrey(parkingDto.getCountrey());
+        parking.setAdress(parkingDto.getAdress());
+        parking.setCity(parkingDto.getCity());
+        parking.setStatus(parkingDto.getStatus());
+        parking.setParkingImage(null);
+        parking.setPpn(parkingDto.getPpn());
+        parking.setService(parkingDto.getService());
+        parking.setUser(userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
-        return apartment;
+        return parking;
     }
 
     //AICI
-    public ApartmentDto getApartmentDtoFromApartment(Apartment apartment)
+    public ParkingDto getParkingDtoFromParking(Parking parking)
     {
-        ApartmentDto apartmentDto = new ApartmentDto();
-        apartmentDto.setApartmentID(apartment.getId());
-        apartmentDto.setApartmentName(apartment.getApartmentName());
-        apartmentDto.setCountrey(apartment.getCountrey());
-        apartmentDto.setCity(apartment.getCity());
-        apartmentDto.setAdress(apartment.getAdress());
-        apartmentDto.setPpn(apartment.getPpn());
-        apartmentDto.setService(apartment.getService());
-        apartmentDto.setStatus(apartment.getStatus());
-        apartmentDto.setUserName(apartment.getUser().getUserName());
+        ParkingDto parkingDto = new ParkingDto();
+        parkingDto.setParkingID(parking.getId());
+        parkingDto.setParkingName(parking.getParkingName());
+        parkingDto.setCountrey(parking.getCountrey());
+        parkingDto.setCity(parking.getCity());
+        parkingDto.setAdress(parking.getAdress());
+        parkingDto.setPpn(parking.getPpn());
+        parkingDto.setService(parking.getService());
+        parkingDto.setStatus(parking.getStatus());
+        parkingDto.setUserName(parking.getUser().getUserName());
 
-        return  apartmentDto;
+        return parkingDto;
     }
 
     //AICI
-    public Apartment updateApartmentFromApartmentDto(ApartmentDto apartmentDto)
+    public Parking updateParkingFromParkingDto(ParkingDto parkingDto)
     {
-        Apartment apartment = apartmentService.findById(apartmentDto.getApartmentID());
-        apartment.setApartmentName(apartmentDto.getApartmentName());
-        apartment.setPpn(apartmentDto.getPpn());
-        return apartment;
+        Parking parking = parkingService.findById(parkingDto.getParkingID());
+        parking.setParkingName(parkingDto.getParkingName());
+        parking.setPpn(parkingDto.getPpn());
+        return parking;
     }
 
 
 
-    public Apartment updateApartmentStatusFromApartmentDto(ApartmentDto apartmentDto)
+    public Parking updateParkingStatusFromParkingDto(ParkingDto parkingDto)
     {
-        Apartment apartment = apartmentService.findById(apartmentDto.getApartmentID());
-        apartment.setStatus(apartmentDto.getStatus());
-        return apartment;
+        Parking parking = parkingService.findById(parkingDto.getParkingID());
+        parking.setStatus(parkingDto.getStatus());
+        return parking;
     }
 
     public User getUserFromUserDto(UserRegistrationDto registration)
@@ -87,7 +87,7 @@ public class DtoMapping {
         user.setUserName(registration.getUserName());
         user.setEmail(registration.getEmail());
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
-        user.setApartments(null);
+        user.setParkings(null);
         user.setRoles(Arrays.asList(new Role("ROLE_USER")));
         user.setPhone(registration.getPhone());
         user.setCarReg(registration.getCarReg());
@@ -119,7 +119,7 @@ public class DtoMapping {
         booking.setBookingId(bookingDto.getBookingId());
         booking.setCheckIn(bookingDto.getCheckIn());
         booking.setCheckOut(bookingDto.getCheckOut());
-        booking.setApartment(getApartmentFromApartmentDto(bookingDto.getApartmentDto()));
+        booking.setParking(getParkingFromParkingDto(bookingDto.getParkingDto()));
         booking.setUser(userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
         return booking;
@@ -132,7 +132,7 @@ public class DtoMapping {
         bookingDto.setBookingId(booking.getBookingId());
         bookingDto.setCheckIn(booking.getCheckIn());
         bookingDto.setCheckOut(booking.getCheckOut());
-        bookingDto.setApartmentDto(getApartmentDtoFromApartment(booking.getApartment()));
+        bookingDto.setParkingDto(getParkingDtoFromParking(booking.getParking()));
 
         return bookingDto;
     }

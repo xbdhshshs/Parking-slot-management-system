@@ -23,7 +23,7 @@
 <div class="container-past">
 
 
-    <h3>Curent bookings for this apartment</h3>
+    <h3>Curent bookings for this parking</h3>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
@@ -43,8 +43,8 @@
         <tr th:each="tempBookings : ${bookings}">
 
 
-            <td th:text="${tempBookings.apartment.getApartmentName()}"/>
-            <td th:text="${tempBookings.apartment.getCity()}"/>
+            <td th:text="${tempBookings.parking.getParkingName()}"/>
+            <td th:text="${tempBookings.parking.getCity()}"/>
             <td th:text="${tempBookings.checkIn.toString().substring(0,10)}"/>
             <td th:text="${tempBookings.checkOut.toString().substring(0,10)}"/>
             <td th:if="${tempBookings.rating!=null}" th:text="${tempBookings.rating != null} ? (${tempBookings.rating.stars})"/>

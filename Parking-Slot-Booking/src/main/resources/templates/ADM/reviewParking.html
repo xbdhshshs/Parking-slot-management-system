@@ -24,32 +24,32 @@
 
 <section class="jumbotron text-left">
     <div class="container">
-        <h1 class="jumbotron-heading">Pending apartment details</h1>
-        <p class="lead text-muted mb-0"> Here are the detail infos of the pending apartment</p>
+        <h1 class="jumbotron-heading">Pending parking details</h1>
+        <p class="lead text-muted mb-0"> Here are the detail infos of the pending parking</p>
     </div>
 </section>
 
-<div class="container-checkApartment">
-    <div class="row-checkApartment">
+<div class="container-checkParking">
+    <div class="row-checkParking">
 
-        <div class="col-md-5" th:object="${apartment}" method="POST">
-            <p th:text="'Apartment name: ' + ${apartment.apartmentName}"/>
-            <p th:text="'Apartment countrey: ' + ${apartment.countrey}"/>
-            <p th:text="'Apartment city: ' + ${apartment.city}"/>
-            <p th:text="'Adress: ' + ${apartment.adress}"/>
-            <p th:text="'Initial price: ' + ${apartment.ppn}"/>
-            <p th:text="'Owner name: ' + ${apartment.user.getUserName()}"/>
-            <p th:text="'Service: ' + ${apartment.service}"/>
+        <div class="col-md-5" th:object="${parking}" method="POST">
+            <p th:text="'Parking name: ' + ${parking.parkingName}"/>
+            <p th:text="'Parking countrey: ' + ${parking.countrey}"/>
+            <p th:text="'Parking city: ' + ${parking.city}"/>
+            <p th:text="'Adress: ' + ${parking.adress}"/>
+            <p th:text="'Initial price: ' + ${parking.ppn}"/>
+            <p th:text="'Owner name: ' + ${parking.user.getUserName()}"/>
+            <p th:text="'Service: ' + ${parking.service}"/>
 
             <form id="statusForm" class="w3-section" method="post" th:action="@{/admin/saveStatus}"
-                  th:object="${apartment}">
-                <input type="hidden" name="apartmentId" th:value="${apartment.id}">
-                <input type="hidden" id="apartmentStatus" name="apartmentStatus" value="">
+                  th:object="${parking}">
+                <input type="hidden" name="parkingId" th:value="${parking.id}">
+                <input type="hidden" id="parkingStatus" name="parkingStatus" value="">
                 <button class="w3-button w3-green status-button" data-status="accepted">Accept</button>
                 <button class="w3-button w3-red status-button" data-status="declined">Decline</button>
             </form>
         </div>
-        <a th:href="@{/admin/pendingApartments}">Back to posting requests</a>
+        <a th:href="@{/admin/pendingParkings}">Back to posting requests</a>
     </div>
 
     <hr>
@@ -67,7 +67,7 @@
     $(".status-button").click(function (event) {
         event.preventDefault();
         const status = $(this).data("status");
-        $("#apartmentStatus").val(status);
+        $("#parkingStatus").val(status);
         $("#statusForm").submit();
     })
 </script>

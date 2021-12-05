@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SmartRent|Inspect apartment</title>
+    <title>SmartRent|Inspect parking</title>
 
 
 
@@ -31,18 +31,18 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-5" th:object="${apartment}" method="POST" style="align-items: center">
+        <div class="col-md-5" th:object="${parking}" method="POST" style="align-items: center">
             <td class="w-25" >
-                <img src="https://st2.depositphotos.com/2704315/8710/v/950/depositphotos_87107884-stock-illustration-vector-parking-flat-cartoon-illustration.jpg" class="img-fluid img-thumbnail" alt="apartment">
+                <img src="https://st2.depositphotos.com/2704315/8710/v/950/depositphotos_87107884-stock-illustration-vector-parking-flat-cartoon-illustration.jpg" class="img-fluid img-thumbnail" alt="parking">
             </td>
-            <p th:text="'Parking slot name: ' + ${apartment.apartmentName}"/>
-            <p th:text="'Hosted by '+ ${apartment.user.userName}"/>
-            <p th:text="'Recommended car types: ' + ${apartment.countrey}"/>
-            <p th:text="'Recommended car models: ' + ${apartment.city}"/>
-            <p th:text="'Rating ' + ${apartment.adress}"/>
-            <p th:text="'Price/hour: ' + ${apartment.ppn}"/>
+            <p th:text="'Parking slot name: ' + ${parking.parkingName}"/>
+            <p th:text="'Hosted by '+ ${parking.user.userName}"/>
+            <p th:text="'Recommended car types: ' + ${parking.countrey}"/>
+            <p th:text="'Recommended car models: ' + ${parking.city}"/>
+            <p th:text="'Rating ' + ${parking.adress}"/>
+            <p th:text="'Price/hour: ' + ${parking.ppn}"/>
             <p th:text="'Number of active bookings: '+ ${valid.size()}"/>
-<!--            <p th:text="${apartment.getRatting()>0 ?apartment.getRatting() : 'No ratting yet'}"  />-->
+<!--            <p th:text="${parking.getRatting()>0 ?parking.getRatting() : 'No ratting yet'}"  />-->
 
 
         </div>

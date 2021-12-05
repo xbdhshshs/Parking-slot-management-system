@@ -50,7 +50,7 @@ public class EmailController {
         javaMailSender.send(message);
     }
 
-    public void sendBookingInfoForCustomer(String userName,String email, String checkin,String checkout,String apartmentName,String apartmentCity,String apartmentCountry,String street){
+    public void sendBookingInfoForCustomer(String userName,String email, String checkin,String checkout,String parkingName,String parkingCity,String parkingCountry,String street){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("parkingslotbookingservice0972@gmail.com");
         message.setTo(email);
@@ -62,14 +62,14 @@ public class EmailController {
 
     }
 
-//    public void sendBookingAlertToGuest(String userName,String email,String apartmentName,String checkin,String checkout)
+//    public void sendBookingAlertToGuest(String userName,String email,String parkingName,String checkin,String checkout)
 //    {
 //        SimpleMailMessage message = new SimpleMailMessage();
 //        message.setFrom("parkingslotbookingservice0972@gmail.com");
 //        message.setTo(email);
 //        String capitalizaedUserName = userName.substring(0, 1).toUpperCase()+userName.substring(1);
-//        message.setSubject("New reservation on one of your apartments!!");
-//        message.setText("Hello"+capitalizaedUserName+"!\nNew reservation on "+apartmentName+" from "+checkin+" to "+checkout);
+//        message.setSubject("New reservation on one of your parkings!!");
+//        message.setText("Hello"+capitalizaedUserName+"!\nNew reservation on "+parkingName+" from "+checkin+" to "+checkout);
 //        javaMailSender.send(message);
 //
 //    }

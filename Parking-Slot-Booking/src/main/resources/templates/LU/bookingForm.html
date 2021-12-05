@@ -27,7 +27,7 @@
 
     <p class="h4 mb-4">Book Slot</p>
 
-    <form action="#" th:action="@{'/user/saveBooking/'+${apartment.id}}" th:object="${booking}" method="POST">
+    <form action="#" th:action="@{'/user/saveBooking/'+${parking.id}}" th:object="${booking}" method="POST">
 
         <input type="date" th:field="*{checkIn}"
                class="form-control mb-4 col-4" placeholder="Check-in date"/>

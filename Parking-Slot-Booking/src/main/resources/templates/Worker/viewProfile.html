@@ -44,7 +44,7 @@
     border-radius: 20px;">
         <div class="row">
             <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/v_collection_png/512x512/shadow/worker.png"
-                 class="img-fluid img-thumbnail" alt="apartment" height="20%" width="50%">
+                 class="img-fluid img-thumbnail" alt="parking" height="20%" width="50%">
             <div class="col-md-5" th:object="${user}" method="POST">
                 <table  style="table-layout:fixed;width: 280px;column-width: 20px;" >
                     <tr>
@@ -62,7 +62,7 @@
 <!--                    </tr>-->
                     <tr>
                         <td style="font-weight: bolder;"><p th:text="'Active Slots:'"></p></td>
-                        <td><p th:text="${activeApartments}"></p></td>
+                        <td><p th:text="${activeParkings}"></p></td>
                     </tr>
                     <tr>
                         <td style="font-weight: bolder;"><p th:text="'Money received: '"></p></td>

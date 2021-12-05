@@ -4,7 +4,7 @@
 <!--    my name is anthony-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SmartRent|Apartment form</title>
+    <title>SmartRent|Parking form</title>
 
 
 
@@ -34,12 +34,12 @@
 
 
 
-    <form class="theForm" action="#" th:action="@{/user/save}" th:object="${apartment}"
+    <form class="theForm" action="#" th:action="@{/user/save}" th:object="${parking}"
      method="POST" style=" color:white; padding:20px;width: 80%!important;">
         <h2 class="h4 mb-4" >Book a Slot</h2>
-        <input type="text" th:field="*{apartmentName}"
+        <input type="text" th:field="*{parkingName}"
                class="form-control mb-4 col-4" placeholder="Slot name"/>
-        <div class="alert alert-danger" th:if="${#fields.hasErrors('apartmentName')}" th:errors="*{apartmentName}" style="width:350px;"></div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('parkingName')}" th:errors="*{parkingName}" style="width:350px;"></div>
 
         <input type="text" th:field="*{countrey}"
                class="form-control mb-4 col-4" placeholder="Country"/>
