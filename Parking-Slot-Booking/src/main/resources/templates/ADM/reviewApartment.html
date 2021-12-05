@@ -39,7 +39,7 @@
             <p th:text="'Adress: ' + ${apartment.adress}"/>
             <p th:text="'Initial price: ' + ${apartment.ppn}"/>
             <p th:text="'Owner name: ' + ${apartment.user.getUserName()}"/>
-
+            <p th:text="'Service: ' + ${apartment.service}"/>
 
             <form id="statusForm" class="w3-section" method="post" th:action="@{/admin/saveStatus}"
                   th:object="${apartment}">

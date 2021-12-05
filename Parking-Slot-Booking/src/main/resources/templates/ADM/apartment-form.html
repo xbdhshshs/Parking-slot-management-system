@@ -29,10 +29,6 @@
 
 <div class="container-addForm">
 
-
-
-
-
     <form class="theForm" action="#" th:action="@{/admin/save}" th:object="${apartment}"
      method="POST" style=" color: white; padding: 20px;">
         <p class="h4 mb-4" >Add a Slot</p>
@@ -58,6 +54,10 @@
         <input type="text" th:field="*{ppn}"
                class="form-control mb-4 col-4" placeholder="Price/Night"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('ppn')}" th:errors="*{ppn}"></p>
+
+        <input type="text" th:field="*{service}"
+               class="form-control mb-4 col-4" placeholder="service">
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('service')}" th:errors="*{service}"></p>
 
 		<button type="submit" class="btn btn-info col-2">Add</button>
     </form>

@@ -31,22 +31,22 @@
 
 
     <form class="search" action="#" th:action="@{/searchApartments}" th:object="${search}" method="get">
-        <div align="center">
-        <div class="search-container">
-            <label class="header-title">Find By: </label>
-            <input name="search" id="search" style="height:21px;"/>
-            <select name="criteria" id="criteria" style="height:27px;">
-                <option value="none" id="none">Show all</option>
-                <option value="apartmentPrice" id="apartmentPrice">Price less than</option>
-                <option value="apartmentCity" id="apartmentCity">City containing letter(s)</option>
-                <option value="apartmentCountry" id="apartmentCountry">Country containing letter(s)</option>
+<!--        <div align="center">-->
+<!--&lt;!&ndash;        <div class="search-container">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="header-title">Find By: </label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input name="search" id="search" style="height:21px;"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <select name="criteria" id="criteria" style="height:27px;">&ndash;&gt;-->
+<!--&lt;!&ndash;                <option value="none" id="none">Show all</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option value="apartmentPrice" id="apartmentPrice">Price less than</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option value="apartmentCity" id="apartmentCity">City containing letter(s)</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option value="apartmentCountry" id="apartmentCountry">Country containing letter(s)</option>&ndash;&gt;-->
 
-            </select>
-            <button class="regular-action-button" style="display: initial !important;padding: 3px 12px !important;"
-                    type="submit">Search
-            </button>
-        </div>
-        </div>
+<!--&lt;!&ndash;            </select>&ndash;&gt;-->
+<!--            <button class="regular-action-button" style="display: initial !important;padding: 3px 12px !important;"-->
+<!--                    type="submit">Search-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        </div>-->
         <div th:if="${not #lists.isEmpty(search)}">
 
             <table class="table table-bordered table-striped">
