@@ -14,45 +14,73 @@
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
 
     <!--  -->
-	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
+    <link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
 
 </head>
 
 <body>
 
 <div th:insert="~{/fragments/header :: header}"></div>
-
-<section class="jumbotron text-left">
+<br>
+<br>
+<br>
+<section class="text-left">
     <div class="container">
-        <h1 class="jumbotron-heading">Pending parking details</h1>
-        <p class="lead text-muted mb-0"> Here are the detail infos of the pending parking</p>
+        <h1 >Pending parking slot details</h1>
     </div>
 </section>
 
-<div class="container-checkParking">
-    <div class="row-checkParking">
+<div class="container-checkParking container-userlist" style="align-items: center;">
+    <div class="box" style="border-collapse:separate; border:solid black 1px;;border-radius: 20px!important">
+        <div class="row" >
+            <div class="col-md-5" th:object="${parking}" method="POST">
+                <table>
+                    <tr>
+                        <td><p th:text="'Parking name: '"/></td>
+                        <td><p th:text="${parking.parkingName}"/></td>
+                    </tr>
+                    <tr>
+                        <td><p th:text="'Parking countrey: '"/></td>
+                        <td><p th:text="${parking.countrey}"/></td>
+                    </tr>
+                    <tr>
+                        <td><p th:text="'Parking city: '"/></td>
+                        <td><p th:text="${parking.city}"/></td>
+                    </tr>
+                    <tr>
+                        <td><p th:text="'Adress: '"/></td>
+                        <td><p th:text="${parking.adress}"/></td>
+                    </tr>
+                    <tr>
+                        <td><p th:text="'Initial price: '"/></td>
+                        <td><p th:text="${parking.ppn}"/></td>
+                    </tr>
+                    <tr>
+                        <td><p th:text="'Owner name: '"/></td>
+                        <td><p th:text="${parking.user.getUserName()}"/></td>
+                    </tr>
+                    <tr>
+                        <td><p th:text="'Owner name: '"/></td>
+                        <td><p th:text="${parking.user.getUserName()}"/></td>
+                    </tr>
+                    <tr>
+                        <td><p th:text="'Service: '"/></td>
+                        <td><p th:text="${parking.service}"/></td>
+                    </tr>
+                </table>
 
-        <div class="col-md-5" th:object="${parking}" method="POST">
-            <p th:text="'Parking name: ' + ${parking.parkingName}"/>
-            <p th:text="'Parking countrey: ' + ${parking.countrey}"/>
-            <p th:text="'Parking city: ' + ${parking.city}"/>
-            <p th:text="'Adress: ' + ${parking.adress}"/>
-            <p th:text="'Initial price: ' + ${parking.ppn}"/>
-            <p th:text="'Owner name: ' + ${parking.user.getUserName()}"/>
-            <p th:text="'Service: ' + ${parking.service}"/>
-
-            <form id="statusForm" class="w3-section" method="post" th:action="@{/admin/saveStatus}"
-                  th:object="${parking}">
-                <input type="hidden" name="parkingId" th:value="${parking.id}">
-                <input type="hidden" id="parkingStatus" name="parkingStatus" value="">
-                <button class="w3-button w3-green status-button" data-status="accepted">Accept</button>
-                <button class="w3-button w3-red status-button" data-status="declined">Decline</button>
-            </form>
+                <form id="statusForm" class="w3-section" method="post" th:action="@{/admin/saveStatus}"
+                      th:object="${parking}">
+                    <input type="hidden" name="parkingId" th:value="${parking.id}">
+                    <input type="hidden" id="parkingStatus" name="parkingStatus" value="">
+                    <button class="w3-button w3-green status-button" data-status="accepted">Accept</button>
+                    <button class="w3-button w3-red status-button" data-status="declined">Decline</button>
+                </form>
+            </div>
+            <a th:href="@{/admin/pendingParkings}">Back to posting requests</a>
         </div>
-        <a th:href="@{/admin/pendingParkings}">Back to posting requests</a>
-    </div>
 
-    <hr>
+    </div>
 
 </div>
 
@@ -73,9 +101,9 @@
 </script>
 </body>
 <style>
-	body{
-		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
-		background-size: cover;
-	}
+    body{
+        background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+        background-size: cover;
+    }
 </style>
 </html>
