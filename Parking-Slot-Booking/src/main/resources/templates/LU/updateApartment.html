@@ -13,21 +13,22 @@
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
 
-
+	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
 
 </head>
 
 <body>
 
 <div th:insert="~{/fragments/header :: header}"></div>
-
+<br><br>
 <div align="center">
-    <h1>Edit Apartment Info</h1>
+    <h1>Edit Parking Slot</h1>
     <br/>
 
 
     <div class="modal-body">
-        <form th:action="@{'/user/edit-apartment'}" method="post" th:object="${apartment}">
+        <form th:action="@{'/user/edit-apartment'}" method="post" th:object="${apartment}" 
+        style="background-color: black; padding:20px; color:white; background-size:100px 100px">
             <input type="hidden" id="id" th:field="${apartment.apartmentID}" name="id">
 
             <div class="col-md-6" style="margin-bottom: 2%">
@@ -52,8 +53,8 @@
             <input type="hidden" id="adress" th:field="${apartment.adress}" name="id">
 
             <div class="text-center">
-                <button type="submit" class="empty-button btn btn-default">
-                    Edit
+                <button type="submit" class="empty-button btn btn-default" style="background-color: white!important">
+                    Update
                 </button>
 
             </div>
@@ -76,4 +77,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+<style>
+	body{
+		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+		background-size: cover;
+	}
+</style>
 </html>

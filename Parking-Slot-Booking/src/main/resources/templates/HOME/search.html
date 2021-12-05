@@ -52,11 +52,11 @@
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                 <tr>
-                    <th>Apartment Photo</th>
-                    <th>Apartment Name</th>
-                    <th>Countrey</th>
+                    <th>Parking Slot Photo</th>
+                    <th>Parking Slot Number</th>
+                    <th>Country</th>
                     <th>City</th>
-                    <th>Addres</th>
+                    <th>Address</th>
                     <th>Price/Night</th>
                     <th>Rating</th>
 
@@ -65,11 +65,11 @@
                 </thead>
 
                 <tbody>
-                <tr th:each="tempApartments : ${search}">
+                <tr th:each="tempApartments : ${search}" style="background-color: white">
 
                     <td class="w-25">
                         <a th:href="@{|/viewApartment/${tempApartments.id}|}">
-                            <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail1" alt="apartment">
+                            <img src="https://st2.depositphotos.com/7752738/11007/v/600/depositphotos_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-fluid img-thumbnail1" alt="apartment">
                         </a>
                     </td>
                     <td th:text="${tempApartments.apartmentName}"/>
@@ -78,7 +78,6 @@
                     <td th:text="${tempApartments.adress}"/>
                     <td th:text="${tempApartments.ppn}+' $'"/>
                     <td th:text="${tempApartments.getRatting()>0 ? tempApartments.getRatting()+'/5' : 'No ratting yet'}"  />
-
 
                 </tr>
                 </tbody>
@@ -96,6 +95,11 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-
 </body>
+<style>
+	body{
+		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+		background-size: cover;
+	}
+</style>
 </html>

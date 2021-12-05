@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>User control panel</title>
+    <title>SmartRent|User control panel</title>
 
 
     <!-- Bootstrap CSS -->
@@ -11,7 +11,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
-
+	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" th:href="@{/static/css/carousel.css}"/>
@@ -20,11 +20,9 @@
 
 <div th:insert="~{/fragments/header :: header}"></div>
 
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">User control panel</h1>
-    <p class="lead"> Feel free to rate your past experiences,change your user details or even become a hoster on
-        Smart Rent!Sent your appartment required
-        details and if everything is ok we will post your apartment to be viewed on our list then rented!.</p>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="color: white!important">
+    <h1 class="display-4" style= "color:white">User Dashboard</h1>
+    
 </div>
 
 <div class="container">
@@ -35,41 +33,44 @@
                 <div class="vertical-center">
 
                     <div class="card-body">
-                        <a th:href="@{/user/viewProfile}" class="btn btn-lg btn-block btn-outline-primary"> <i
+                        <a th:href="@{/user/viewProfile}" class="btn btn-lg btn-block btn-outline-primary" 
+                        style="background-color: black!important"> <i
                                 class="fa fa-arrow-circle-o-left"></i>&nbsp;View profile</a>
 
                     </div>
 
 
                     <div class="card-body">
-                        <a th:href="@{/user/savedApartments}" class="btn btn-lg btn-block btn-outline-primary"> <i
-                                class="fa fa-arrow-circle-o-left"></i>&nbsp;View Saved Parking spaces</a>
+                        <a th:href="@{/user/savedApartments}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important"> <i
+                                class="fa fa-arrow-circle-o-left"></i>&nbsp;View Parking Slots</a>
                     </div>
 
 
                     <div class="card-body">
-                        <a th:href="@{/user/showFormForAdd}" class="btn btn-lg btn-block btn-outline-primary"> <i
-                                class="fa fa-arrow-circle-o-left"></i>&nbsp;Add an apartment on our website</a>
+                        <a th:href="@{/user/showFormForAdd}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important"> <i
+                                class="fa fa-arrow-circle-o-left"></i>&nbsp;Add a Parking Slot</a>
                     </div>
 
 
-                    <div class="card-body">
-                        <a th:href="@{/user/pastVisits}" class="btn btn-lg btn-block btn-outline-primary"> <i
-                                class="fa fa-arrow-circle-o-left"></i>&nbsp;Go to your past exeperiences</a>
-
-
-                    </div>
+                    
 
                     <div class="card-body">
-                        <a th:href="@{/user/stays}" class="btn btn-lg btn-block btn-outline-primary"> <i
-                                class="fa fa-arrow-circle-o-left"></i>My apartments</a>
+                        <a th:href="@{/user/stays}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important"> <i
+                                class="fa fa-arrow-circle-o-left"></i>My Parking Slots</a>
 
 
                     </div>
 
                     <div class="card-body">
-                        <a th:href="@{/user/myBookings}" class="btn btn-lg btn-block btn-outline-primary"><i
+                        <a th:href="@{/user/myBookings}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important"><i
                                 class="fa fa-arrow-circle-o-left"></i>Check your bookings!</a>
+
+                    </div>
+                    
+                    <div class="card-body">
+                        <a th:href="@{/user/pastVisits}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important"> <i
+                                class="fa fa-arrow-circle-o-left"></i>&nbsp;Go to your past experiences</a>
+
 
                     </div>
                 </div>
@@ -93,4 +94,10 @@
 
 
 </body>
+<style>
+	body{
+		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+		background-size: cover;
+	}
+</style>
 </html>
