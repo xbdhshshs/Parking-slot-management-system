@@ -117,9 +117,9 @@
                             <div sec:authorize="hasAuthority('ROLE_USER')">
                                 
                                 <a th:href="@{/user/viewProfile}" class="dropdown-item">View profile</a>
-                                <a th:href="@{/user/savedApartments}" class="dropdown-item">View Parking Slots</a>
-                                <a th:href="@{/user/showFormForAdd}" class="dropdown-item">Add a Parking Slot</a>
-                                <a th:href="@{/user/stays}" class="dropdown-item">My Parking Slots</a>
+                                <a th:href="@{/apartments}" class="dropdown-item">Book Parking Slots</a>
+<!--                                <a th:href="@{/user/showFormForAdd}" class="dropdown-item">Add a Parking Slot</a>-->
+<!--                                <a th:href="@{/user/stays}" class="dropdown-item">My Parking Slots</a>-->
                                 <a th:href="@{/user/myBookings}" class="dropdown-item">Check your bookings!</a>
                                
                                 
@@ -136,7 +136,7 @@
                             </div>
                             
 
-                            <div class="dropdown-divider"></div>
+<!--                            <div class="dropdown-divider"></div>-->
 
                         </div>
                     </div>

@@ -47,7 +47,7 @@ boolean Otpbool =false;
 //    public String Otp="87GkhwYkj";
 
     Generator obj=new Generator();
-    public String Otp= obj.generateRandomPassword(8);
+    public String Otp= obj.generateRandomPassword(6);
 
     @GetMapping
     public String showRegistrationForm(Model theModel) {

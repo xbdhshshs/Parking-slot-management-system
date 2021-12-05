@@ -54,12 +54,13 @@
                 <tr>
                     <th>Parking Slot Photo</th>
                     <th>Parking Slot Number</th>
-                    <th>Country</th>
-                    <th>City</th>
-                    <th>Address</th>
-                    <th>Price/Night</th>
+                    <th>Recommended car types</th>
+                    <th>Recommended car models</th>
+                    <th>Worker Rating</th>
+                    <th>Added by</th>
+                    <th>Price/hour</th>
                     <th>Services</th>
-                    <th>Rating</th>
+<!--                    <th>Rating</th>-->
 
 
                 </tr>
@@ -77,9 +78,10 @@
                     <td th:text="${tempApartments.countrey}"/>
                     <td th:text="${tempApartments.city}"/>
                     <td th:text="${tempApartments.adress}"/>
+                    <td th:text="${tempApartments.user.userName}"/>
                     <td th:text="${tempApartments.ppn}+' $'"/>
                     <td th:text="${tempApartments.service}"></td>
-                    <td th:text="${tempApartments.getRatting()>0 ? tempApartments.getRatting()+'/5' : 'No ratting yet'}"  />
+<!--                    <td th:text="${tempApartments.getRatting()>0 ? tempApartments.getRatting()+'/5' : 'No ratting yet'}"  />-->
 
                 </tr>
                 </tbody>
