@@ -19,21 +19,21 @@
 
 <body>
 
-<div th:insert="~{/fragments/header :: header}"></div>
+<div th:insert="~{/fragments/header :: header}"></div><br>
 
-<section class="jumbotron text-left">
-    <div class="container">
-        <h1 class="jumbotron-heading">Apartment Details</h1>
-        <p class="lead text-muted mb-0"> Here are the detail infos of the Apartment</p>
+<section class="">
+    <div class="">
+        <h1 style="text-align: center;">Parking Slot Details</h1>
+        
     </div>
 </section>
 
 <div class="container">
     <div class="row">
 
-        <div class="col-md-5" th:object="${apartment}" method="POST">
-            <td class="w-25">
-                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="apartment">
+        <div class="col-md-5" th:object="${apartment}" method="POST" style="align-items: center">
+            <td class="w-25" >
+                <img src="https://st2.depositphotos.com/2704315/8710/v/950/depositphotos_87107884-stock-illustration-vector-parking-flat-cartoon-illustration.jpg" class="img-fluid img-thumbnail" alt="apartment">
             </td>
             <p th:text="'Apartment Name: ' + ${apartment.apartmentName}"/>
             <p th:text="'Hosted by '+ ${apartment.user.userName}"/>
@@ -79,7 +79,7 @@
 
 
     <hr>
-    <a th:href="@{/worker/stays}">Back to Apartment List</a>
+    <a th:href="@{/worker/stays}">Back to Slot List</a>
 
 </div>
 
