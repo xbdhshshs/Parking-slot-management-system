@@ -11,15 +11,16 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
-
+	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
     <style>
         .box{
             display: table;
             margin: 0 auto;
             border: 1px solid black
         }
-
-
+        img {
+  			border-radius: 50%;
+		}
 
     </style>
 
@@ -29,33 +30,51 @@
 
 <div th:insert="~{/fragments/header :: header}"></div>
 
+
 <div class="container">
-
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">My profile</h1>
-            <p class="lead text-muted mb-0">Details for your profile </p>
+	<br><br><br>
+    <section class="">
+        <div class="">
+            <h1 class="" style="text-align: center;color: white">My profile</h1>
         </div>
-    </section>
+    </section><br>
 
-    <div class="box">
-        <div class="row">
-
+    <div class="box" style="border-collapse:separate;
+    border:solid black 1px;;border-radius: 20px!important">
+        <div class="row" >
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSClqxVXOq5xQWJNkEPeVlI8wzCeCWjRj9yXK59aDuh5to_51lPmLrMsMtspPsH5pXZf4k&usqp=CAU"
+	            class="img-fluid img-thumbnail"  alt="apartment" >
             <div class="col-md-5" th:object="${user}" method="POST">
-                <td class="w-25">
-                    <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png"
-                         class="img-fluid img-thumbnail" alt="apartment">
-                </td>
-                <p th:text="'User Name: ' + ${user.userName}"/>
-                <p th:text="${user.getRatting()>0 ? 'Rating: '+user.getRatting()+'/5' : 'No ratting yet'}"  />
-                <p th:text="'Reservations made so far: '+${size}"/>
-                <p th:text="'Total spent '+${sum}+' $'"/>
-                <p th:text="'Active apartments owned on SmartRent: '+${activeApartments}"/>
-                <p th:text="'Total money received: '+${guestIncome}+' $'"/>
-                <p th:text="'Bookings placed so far on my apartments : '+${reservations}"/>
-
-
-
+            <table >
+            	<tr>
+            		<td style="font-weight: bolder;"><p th:text="'User Name:'"></p></td>
+            		<td><p th:text="${user.userName}"></p></td>
+            	</tr>
+            	<tr>
+            		<td style="font-weight: bolder;"> Rating: </td>
+            		<td th:text="${user.getRatting()>0 ? 'Rating: '+user.getRatting()+'/5' : 'No rating yet'}"></td>
+            	</tr>
+            	<tr>
+            		<td style="font-weight: bolder;"><p th:text="'Reservations made:'"></p></td>
+            		<td><p th:text="${size}"></p></td>
+            	</tr>
+                <tr>
+            		<td style="font-weight: bolder;"><p th:text="'Total spent:'"></p></td>
+            		<td><p th:text="'$ '+${sum}"></p></td>
+            	</tr>
+            	<tr>
+            		<td style="font-weight: bolder;"><p th:text="'Active parking Slots:'"></p></td>
+            		<td><p th:text="${activeApartments}"></p></td>
+            	</tr>
+                <tr>
+            		<td style="font-weight: bolder;"><p th:text="'Money received: '"></p></td>
+            		<td><p th:text="'$ '+${guestIncome}"></p></td>
+            	</tr>
+            	<tr>
+            		<td style="font-weight: bolder;"><p th:text="'Bookings placed : '"></p></td>
+            		<td><p th:text="${reservations}"></p></td>
+            	</tr>
+            </table>
             </div>
 
 
@@ -74,4 +93,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+<style>
+	body{
+		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+		background-size: cover;
+	}
+</style>
 </html>

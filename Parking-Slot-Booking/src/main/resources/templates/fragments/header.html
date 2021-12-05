@@ -14,7 +14,7 @@
 </head>
 <body class="d-flex flex-column">
 <div th:fragment="header">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info" style="background-color: #2a4651!important">
         <a th:href="@{/}" class="navbar-brand" >Parking Slot Booking</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar"
                 aria-controls="collapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,22 +22,25 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsingNavbar">
             <ul class="navbar-nav ml-auto w-100 justify-content-end">
-                <li class="nav-item active">
-                    <a th:href="@{/}" class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a th:href="@{/}" class="nav-link" href="#">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                           Home 
+                    <span class="sr-only">(current)</span></a>
                 </li>
                 <div sec:authorize="hasAuthority('ROLE_USER')">
                     <li class="nav-item">
-                        <a th:href="@{/apartments}" class="nav-link" href="#">Stays</a>
+                        <a th:href="@{/apartments}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Stays</a>
                     </li>
                 </div>
                 <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                     <li class="nav-item">
-                        <a th:href="@{/apartments}" class="nav-link" href="#">Stays</a>
+                        <a th:href="@{/apartments}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Stays</a>
                     </li>
                 </div>
                 <div sec:authorize="isAnonymous()">
                     <li class="nav-item">
-                        <a th:href="@{/apartments}" class="nav-link" href="#">Stays</a>
+                        <a th:href="@{/apartments}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Stays</a>
                     </li>
                 </div>
 <!--                <li class="nav-item">-->
@@ -45,8 +48,33 @@
 <!--                </li>-->
 
                 <li class="nav-item">
-                    <a th:href="@{/aboutUs}" class="nav-link" href="#">About Us</a>
+                    <a th:href="@{/aboutUs}" class="nav-link" href="#"><i class="fas fa-info-circle"></i>&nbsp;About Us</a>
                 </li>
+                
+                <li class="nav-item">
+                	<div sec:authorize="isAuthenticated()">
+                        
+                       
+                            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+								
+                                <span class="nav-link"><i class="fas fa-user-shield"></i>&nbsp;ADMIN</span>
+                                
+                              
+                            </div>
+                            
+                            <div sec:authorize="hasAuthority('ROLE_USER')">
+								
+                                <span class="nav-link"><i class="fa fa-user"></i>&nbsp;USER</span>
+                                
+                              
+                            </div>
+                    </div>
+                
+                
+                </li>
+                
+                
+                
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -63,28 +91,56 @@
 
 
                         <div sec:authorize="isAuthenticated()">
-
+                        
+                       
                             <div sec:authorize="hasAuthority('ROLE_ADMIN')">
 
-                                <a href="/admin" class="dropdown-item">Admin options</a>
-                                <a href="/logout" class="dropdown-item">Log out</a>
+                                <!--  <a href="/admin" class="dropdown-item">Admin options</a>-->
+                                
+                                <a th:href="@{/admin/users}" class="dropdown-item">View user list</a>
+                                <a th:href="@{/admin/worker}" class="dropdown-item">View worker list</a>
+                                <a th:href="@{/admin/workers/registerworker}" class="dropdown-item" > Add Workers</a>
+                                <a th:href="@{/admin/showFormForAdd}" class="dropdown-item">Add a Parking Slot</a>
+                                <a th:href="@{/admin/pendingApartments}" class="dropdown-item">Approve/Deny Parking requests</a>
+                              
                             </div>
+                            
+                            
                             <div sec:authorize="hasAuthority('ROLE_USER')">
-                                <a href="/user" class="dropdown-item">Logged user options</a>
-                                <a href="/logout" class="dropdown-item">Log out</a>
+                                
+                                <a th:href="@{/user/viewProfile}" class="dropdown-item">View profile</a>
+                                <a th:href="@{/user/savedApartments}" class="dropdown-item">View Parking Slots</a>
+                                <a th:href="@{/user/showFormForAdd}" class="dropdown-item">Add a Parking Slot</a>
+                                <a th:href="@{/user/stays}" class="dropdown-item">My Parking Slots</a>
+                                <a th:href="@{/user/myBookings}" class="dropdown-item">Check your bookings!</a>
+                                <a th:href="@{/user/pastVisits}" class="dropdown-item" >Go to your past experiences</a>
+                                
 
                             </div>
+                            
+                            
                             <div sec:authorize="hasAuthority('ROLE_WORKER')">
                                 <a href="/worker" class="dropdown-item">Logged Worker options</a>
-                                <a href="/logout" class="dropdown-item">Log out</a>
+                                
 
                             </div>
+                            
 
                             <div class="dropdown-divider"></div>
 
                         </div>
                     </div>
                 </li>
+                <li class="nav-item">
+                	<div sec:authorize="isAuthenticated()">
+                		<a href="/logout" class="nav-link">
+                		<i class="fas fa-sign-out-alt"></i>
+                		Log out
+                		</a>
+                	</div>
+                </li>
+                
+                
 
             </ul>
 

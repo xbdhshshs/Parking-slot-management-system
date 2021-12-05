@@ -10,7 +10,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
-
+	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
     <!--  -->
 
 
@@ -32,7 +32,6 @@
             <th>Apartment City</th>
             <th>Apartment Countrey</th>
             <th>Apartment Adress</th>
-            <th>Service</th>
             <th>Starting</th>
             <th>Ending</th>
             <th>Cancel reservation</th>
@@ -50,7 +49,6 @@
             <td th:text="${tempBookings.apartment.getCity()}"/>
             <td th:text="${tempBookings.apartment.getCountrey()}"/>
             <td th:text="${tempBookings.apartment.getAdress()}"/>
-            <td th:text="${tempBookings.apartment.getService()}"/>
             <td th:text="${tempBookings.checkIn.toString().substring(0,10)}"/>
             <td th:text="${tempBookings.checkOut.toString().substring(0,10)}"/>
 
@@ -79,4 +77,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+<style>
+	body{
+		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+		background-size: cover;
+	}
+</style>
 </html>

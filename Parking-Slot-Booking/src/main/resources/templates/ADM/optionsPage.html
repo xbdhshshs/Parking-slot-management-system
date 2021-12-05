@@ -13,7 +13,11 @@
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
 
 
+	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
+	
 </head>
+
+
 <body>
 
 <div th:insert="~{/fragments/header :: header}"></div>
@@ -24,34 +28,34 @@
 
 </div>
 
-<div class="container-admin">
+<div class="container-admin" >
     <div class="row justify-content-center">
         <div class="card-deck mb-3 text-center">
 
 
             <div class="card-group">
                 <div class="vertical-center">
-                    <div class="card-body">
-                        <a th:href="@{/admin/users}" class="btn btn-lg btn-block btn-outline-primary"> <i
-                                class="fa fa-arrow-circle-o-left"></i>&nbsp;View user list</a>
+                    <div class="card-body" >
+                        <a th:href="@{/admin/users}" class="btn btn-lg btn-block btn-outline-primary" 
+                        style="background-color: black!important" >&nbsp;View user list</a>
                     </div>
 
                     <div class="card-body">
-                        <a th:href="@{/admin/worker}" class="btn btn-lg btn-block btn-outline-primary"> <i
+                        <a th:href="@{/admin/worker}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important" > <i
                                 class="fa fa-arrow-circle-o-left"></i>&nbsp;View worker list</a>
                     </div>
 
                     <div class="card-body">
-                        <a th:href="@{/admin/workers/registerworker}" class="btn btn-lg btn-block btn-outline-primary"> <i
+                        <a th:href="@{/admin/workers/registerworker}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important"> <i
                                 class="fa fa-arrow-circle-o-left"></i>&nbsp;Add Workers</a>
                     </div>
                     <div class="card-body">
-                        <a th:href="@{/admin/showFormForAdd}" class="btn btn-lg btn-block btn-outline-primary"> <i
-                                class="fa fa-arrow-circle-o-left"></i>&nbsp;Add an apartment on the website</a>
+                        <a th:href="@{/admin/showFormForAdd}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important"> <i
+                                class="fa fa-arrow-circle-o-left"></i>&nbsp;Add a Parking Slot</a>
                     </div>
 
                     <div class="card-body">
-                        <a th:href="@{/admin/pendingApartments}" class="btn btn-lg btn-block btn-outline-primary"> <i
+                        <a th:href="@{/admin/pendingApartments}" class="btn btn-lg btn-block btn-outline-primary" style="background-color: black!important"> <i
                                 class="fa fa-arrow-circle-o-left"></i>Approve/Deny apartments renting
                             requests</a>
                     </div>
@@ -79,4 +83,10 @@
 <!--<div th:insert="~{/fragments/footer :: footer}"></div>-->
 
 </body>
+<style>
+	body{
+		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+		background-size: cover;
+	}
+</style>
 </html>

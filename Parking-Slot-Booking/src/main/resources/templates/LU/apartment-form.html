@@ -12,7 +12,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
-
+	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
     <!--  -->
     <style>
 
@@ -33,30 +33,31 @@
 
 
 
-    <form class="theForm" action="#" th:action="@{/user/save}" th:object="${apartment}" method="POST">
-        <p class="h4 mb-4" >Save Apartment</p>
+    <form class="theForm" action="#" th:action="@{/user/save}" th:object="${apartment}"
+     method="POST" style=" color:white; padding:20px;width: 80%!important;">
+        <h2 class="h4 mb-4" >Book a Slot</h2>
         <input type="text" th:field="*{apartmentName}"
-               class="form-control mb-4 col-4" placeholder="Apartment name"/>
-        <p class="alert alert-danger" th:if="${#fields.hasErrors('apartmentName')}" th:errors="*{apartmentName}"></p>
+               class="form-control mb-4 col-4" placeholder="Slot name"/>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('apartmentName')}" th:errors="*{apartmentName}" style="width:350px;"></div>
 
         <input type="text" th:field="*{countrey}"
                class="form-control mb-4 col-4" placeholder="Country"/>
-        <p class="alert alert-danger" th:if="${#fields.hasErrors('countrey')}" th:errors="*{countrey}"></p>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('countrey')}" th:errors="*{countrey}" style=width:350px></div>
 
 
         <input type="text" th:field="*{city}"
                class="form-control mb-4 col-4" placeholder="City"/>
-        <p class="alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}" style=width:350px></div>
 
 
         <input type="text" th:field="*{adress}"
-               class="form-control mb-4 col-4" placeholder="Adress"/>
-        <p class="alert alert-danger" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"></p>
+               class="form-control mb-4 col-4" placeholder="Address"/>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}" style=width:350px></div>
 
 
         <input type="text" th:field="*{ppn}"
                class="form-control mb-4 col-4" placeholder="Price/Night"/>
-        <p class="alert alert-danger" th:if="${#fields.hasErrors('ppn')}" th:errors="*{ppn}"></p>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('ppn')}" th:errors="*{ppn}" style=width:350px></div>
 
 
 
@@ -65,13 +66,11 @@
 
 
 
-        <button type="submit" class="btn btn-info col-2">Save</button>
+        <button type="submit" class="btn btn-info col-2">Book</button>
     </form>
 
     <hr>
-    <div align="center">
-    <a th:href="@{/user/stays}">Back to Apartment List</a>
-    </div>
+    
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -81,4 +80,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+<style>
+	body{
+		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+		background-size: cover;
+	}
+</style>
 </html>
