@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin inspect worker</title>
 
-
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
-	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
+    <link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
     <!--  -->
 
 
@@ -21,34 +19,37 @@
 <body>
 
 <div th:insert="~{/fragments/header :: header}"></div>
-
-<section class="jumbotron text-left">
-    <div class="theUser">
-        <h1 class="jumbotron-heading" align="center">Worker Details</h1>
-        <p class="lead text-muted mb-0" align="center"> Here are the detail infos of the Worker</p>
+<br>
+<br>
+<br>
+<section>
+    <div>
+        <h1 align="center">Worker Details</h1>
     </div>
 </section>
-<div class="container-viewWorker">
-
-
-
-    <div class="row">
-
-        <div class="col-md-5" th:object="${user}" method="POST">
-            <p th:text="'worker name: ' + ${user.userName}"/>
-            <p th:text="'email: ' + ${user.email}"/>
-            <p  th:text="'working in: '+${apartNames}"></p>
-            <p photo to be added/>
-
-
+<div class="container-viewWorker" style="align-items: center;">
+    <div class="box" style="border-collapse:separate; border:solid black 1px;;border-radius: 20px!important">
+        <div class="row" >
+            <div class="col-md-5" th:object="${user}" method="POST">
+                <table>
+                    <tr>
+                        <td style="font-weight: bolder;"><p th:text="'worker name: '"/></td>
+                        <td><p th:text="${user.userName}"/></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bolder;"><p th:text="'email: '"/></td>
+                        <td><p th:text="${user.email}"/></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bolder;"><p  th:text="'working in: '"></p></td>
+                        <td><p  th:text="${apartNames}"></p></td>
+                    </tr>
+                </table>
+                <a th:href="@{/admin/worker}">Back to Worker List</a>
+            </div>
         </div>
-
     </div>
-
-    <hr>
-    <a th:href="@{/admin/users}">Back to Worker List</a>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -57,9 +58,9 @@
         crossorigin="anonymous"></script>
 </body>
 <style>
-	body{
-		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
-		background-size: cover;
-	}
+    body{
+        background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+        background-size: cover;
+    }
 </style>
 </html>
