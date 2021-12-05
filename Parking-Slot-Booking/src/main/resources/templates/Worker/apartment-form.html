@@ -34,9 +34,9 @@
 
 
     <form class="theForm" action="#" th:action="@{/worker/save}" th:object="${apartment}" method="POST">
-        <p class="h4 mb-4" >Save Apartment</p>
+        <p class="h4 mb-4" >Add parking Slot</p>
         <input type="text" th:field="*{apartmentName}"
-               class="form-control mb-4 col-4" placeholder="Apartment name"/>
+               class="form-control mb-4 col-4" placeholder="Parking Slot name"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('apartmentName')}" th:errors="*{apartmentName}"></p>
 
         <input type="text" th:field="*{countrey}"
@@ -67,12 +67,12 @@
 
 
 
-        <button type="submit" class="btn btn-info col-2">Save</button>
+        <button type="submit" class="btn btn-info col-2">Add</button>
     </form>
 
     <hr>
     <div align="center">
-    <a th:href="@{/worker/stays}">Back to Apartment List</a>
+    <a th:href="@{/worker/stays}">Back to Added Slots</a>
     </div>
 </div>
 

@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SmartRent|My apartments</title>
+    <title>My Slots</title>
 
 
     <!-- Bootstrap CSS -->
@@ -23,15 +23,15 @@
 <div class="container-table-custom">
 
 
-    <h3>Owned apartments</h3>
-    <table class="table table-bordered table-striped">
+    <h3 style="text-align: center">Added Slots</h3>
+    <table class="table table-bordered table-striped" style="background-color: white">
         <thead class="thead-dark">
         <tr>
-            <th>Apartment Photo</th>
-            <th>Apartment Name</th>
-            <th>Countrey</th>
+            <th>Parking Slot Photo</th>
+            <th>Parking Slot Name</th>
+            <th>Country</th>
             <th>City</th>
-            <th>Addres</th>
+            <th>Address</th>
             <th>Price/Night</th>
             <th>Status</th>
             <th>Delete</th>
@@ -46,7 +46,7 @@
         <tr th:each="tempApartments : ${apartments}">
 
             <td class="w-25">
-                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="apartment">
+                <img src="https://st2.depositphotos.com/2704315/8710/v/950/depositphotos_87107884-stock-illustration-vector-parking-flat-cartoon-illustration.jpg" class="img-fluid img-thumbnail" alt="apartment">
             </td>
             <td th:text="${tempApartments.apartmentName}"/>
             <td th:text="${tempApartments.countrey}"/>
