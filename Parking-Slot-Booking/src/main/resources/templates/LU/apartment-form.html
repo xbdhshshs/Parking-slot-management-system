@@ -56,10 +56,12 @@
 
 
         <input type="text" th:field="*{ppn}"
-               class="form-control mb-4 col-4" placeholder="Price/Night"/>
+               class="form-control mb-4 col-4" placeholder="Price/hour"/>
         <div class="alert alert-danger" th:if="${#fields.hasErrors('ppn')}" th:errors="*{ppn}" style=width:350px></div>
 
-
+        <input type="text" th:field="*{service}"
+               class="form-control mb-4 col-4" placeholder="Services"/>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('service')}" th:errors="*{service}" style=width:350px></div>
 
 
 
