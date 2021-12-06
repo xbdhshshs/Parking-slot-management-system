@@ -28,10 +28,10 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>Parking Name</th>
-            <th>Parking City</th>
-            <th>Parking Countrey</th>
-            <th>Parking Adress</th>
+            <th>Parking Space Name</th>
+            <th>Car Type</th>
+            <th>Car model</th>
+            <th>Car Registration number</th>
             <th>Starting</th>
             <th>Ending</th>
             <th>Cancel reservation</th>
@@ -48,7 +48,7 @@
             <td th:text="${tempBookings.parking.getParkingName()}"/>
             <td th:text="${tempBookings.parking.getCity()}"/>
             <td th:text="${tempBookings.parking.getCountrey()}"/>
-            <td th:text="${tempBookings.parking.getAdress()}"/>
+            <td th:text="${tempBookings.user.getCarReg()}"/>
             <td th:text="${tempBookings.checkIn.toString().substring(0,10)}"/>
             <td th:text="${tempBookings.checkOut.toString().substring(0,10)}"/>
 

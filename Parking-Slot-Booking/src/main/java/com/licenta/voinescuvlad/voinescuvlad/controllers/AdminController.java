@@ -210,7 +210,8 @@ public class AdminController {
 
         return "/ADM/reviewParking";
     }
-    ///////////////
+
+
     @RequestMapping(path = "/deleteParking/{id}")
     public String deleteParking(Model model, @PathVariable("id") int id) throws IOException {
         Parking parking = parkingService.findById(id);
@@ -230,7 +231,6 @@ public class AdminController {
         theModel.addAttribute("parkings", theParkings);
 
         return "/ADM/pendingParkings";
-
 
     }
     ////////

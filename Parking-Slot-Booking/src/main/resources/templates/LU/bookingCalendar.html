@@ -20,11 +20,11 @@
 
 <div th:insert="~{/fragments/header :: header}"></div>
 
-<div class="container-bookingCalendar">
+<div class="container-bookingCalendar" style="text-align:center">
 
 
 
-    <h3>Curent bookings for this parking</h3>
+    <h3>Current bookings for this parking</h3>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
@@ -37,7 +37,7 @@
         </thead>
 
         <tbody>
-        <tr th:each="tempBookings : ${bookings}">
+        <tr th:each="tempBookings : ${bookings}" style="background-color:white">
 
 
             

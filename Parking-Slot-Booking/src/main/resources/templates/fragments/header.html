@@ -28,11 +28,11 @@
                            Home 
                     <span class="sr-only">(current)</span></a>
                 </li>
-                <div sec:authorize="hasAuthority('ROLE_USER')">
-                    <li class="nav-item">
-                        <a th:href="@{/parkings}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Stays</a>
-                    </li>
-                </div>
+    <!--                <div sec:authorize="hasAuthority('ROLE_USER')">-->
+    <!--                    <li class="nav-item">-->
+    <!--                        <a th:href="@{/parkings}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Stays</a>-->
+    <!--                    </li>-->
+    <!--                </div>-->
                 <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                     <li class="nav-item">
                         <a th:href="@{/parkings}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Stays</a>
