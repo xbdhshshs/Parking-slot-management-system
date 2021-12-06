@@ -93,7 +93,7 @@ boolean Otpbool =false;
                                       BindingResult result, RedirectAttributes attr,Model model) {
 //         String Otp = RandomString.make(8);
 
-        System.out.println(otp);
+        //System.out.println(otp);
         System.out.println(Otp);
         User existing = userService.findByUsername(user.getUserName());
         if (existing != null) {
@@ -107,8 +107,8 @@ boolean Otpbool =false;
             attr.addFlashAttribute("user", user);
             return "redirect:/registration";
         }
-        if (!Otp.equalsIgnoreCase(otp)) {
-            System.out.println(otp);
+        if (!Otp.equals(otp)) {
+            //System.out.println(otp);
             System.out.println(Otp);
             emailService.sendOtp(user.getEmail(), user.getUserName(), Otp);
             Otpbool=true;
@@ -116,11 +116,11 @@ boolean Otpbool =false;
 
             return "registration";
         }
-        System.out.println(otp);
+        //System.out.println(otp);
         System.out.println(Otp);
 
         if (otp.equals(Otp)) {
-            System.out.println(otp);
+            //System.out.println(otp);
             System.out.println(Otp);
             try {
 

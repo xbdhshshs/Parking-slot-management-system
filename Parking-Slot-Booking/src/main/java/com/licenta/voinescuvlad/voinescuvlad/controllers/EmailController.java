@@ -38,15 +38,15 @@ public class EmailController {
         message.setFrom("parkingslotbookingservice0972@gmail.com");
         message.setTo(to);
         message.setSubject("OTP for the Web App");
-        message.setText("Welcome " + username +"\n"+ " Your Otp is " + otp);
+        message.setText("Welcome " + username +"\n"+ "Your Otp is " + otp);
         javaMailSender.send(message);
     }
     public void sendHelloEmail(String to, String username) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("parkingslotbookingservice0972@gmail.com");
         message.setTo(to);
-        message.setSubject("Successful Registration!");
-        message.setText("Welcome " + username + "\n Your Registration is Successful .\n "+ "Thank You  , We Hope You Enjoy Our Services!");
+        message.setSubject("HELLO WORLD!");
+        message.setText("Welcome " + username + "\nYour Registration is Successful.\n"+ "Thank You, We Hope You Enjoy Our Services!");
         javaMailSender.send(message);
     }
 
