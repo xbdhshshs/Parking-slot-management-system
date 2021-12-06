@@ -33,30 +33,30 @@
      method="POST" style=" color: white; padding: 20px;">
         <p class="h4 mb-4" >Add a Slot</p>
         <input type="text" th:field="*{parkingName}"
-               class="form-control mb-4 col-4" placeholder="Slot"/>
+               class="form-control mb-4 col-4" placeholder="Parking space name"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('parkingName')}" th:errors="*{parkingName}"></p>
 
         <input type="text" th:field="*{countrey}"
-               class="form-control mb-4 col-4" placeholder="Country"/>
+               class="form-control mb-4 col-4" placeholder="Recommended car type"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('countrey')}" th:errors="*{countrey}"></p>
 
 
         <input type="text" th:field="*{city}"
-               class="form-control mb-4 col-4" placeholder="City"/>
+               class="form-control mb-4 col-4" placeholder="Recommended car model"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
 
 
         <input type="text" th:field="*{adress}"
-               class="form-control mb-4 col-4" placeholder="Adress"/>
+               class="form-control mb-4 col-4" placeholder="Rating"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"></p>
 
 
         <input type="text" th:field="*{ppn}"
-               class="form-control mb-4 col-4" placeholder="Price/Night"/>
+               class="form-control mb-4 col-4" placeholder="Price/hour"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('ppn')}" th:errors="*{ppn}"></p>
 
         <input type="text" th:field="*{service}"
-               class="form-control mb-4 col-4" placeholder="service">
+               class="form-control mb-4 col-4" placeholder="Service">
         <p class="alert alert-danger" th:if="${#fields.hasErrors('service')}" th:errors="*{service}"></p>
 
 		<button type="submit" class="btn btn-info col-2">Add</button>
