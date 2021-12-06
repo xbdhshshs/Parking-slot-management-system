@@ -37,16 +37,16 @@ public class EmailController {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("parkingslotbookingservice0972@gmail.com");
         message.setTo(to);
-        message.setSubject("Hello customer");
-        message.setText("Welcome " + username + " Your Otp is " + otp);
+        message.setSubject("OTP for the Web App");
+        message.setText("Welcome " + username +"\n"+ " Your Otp is " + otp);
         javaMailSender.send(message);
     }
     public void sendHelloEmail(String to, String username) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("parkingslotbookingservice0972@gmail.com");
         message.setTo(to);
-        message.setSubject("Hello World!");
-        message.setText("Welcome, " + username + ", This is our OOPS project!");
+        message.setSubject("Successful Registration!");
+        message.setText("Welcome " + username + "\n Your Registration is Successful .\n "+ "Thank You  , We Hope You Enjoy Our Services!");
         javaMailSender.send(message);
     }
 
