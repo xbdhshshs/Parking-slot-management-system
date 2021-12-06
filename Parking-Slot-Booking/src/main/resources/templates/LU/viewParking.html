@@ -35,8 +35,8 @@
             <td class="w-25">
                 <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="parking">
             </td>
-            <p th:text="'Parking spacce name: ' + ${parking.parkingName}"/>
-            <p th:text="'Hosted by '+ ${parking.user.userName}"/>
+            <p th:text="'Parking space number: ' + ${parking.parkingName}"/>
+            <p th:text="'Hosted by :'+ ${parking.user.userName}"/>
             <p th:text="'Recommended car type: ' + ${parking.countrey}"/>
             <p th:text="'Recommended car models: ' + ${parking.city}"/>
             <p th:text="'Rating: ' + ${parking.adress}"/>
@@ -78,8 +78,7 @@
     </div>
 
 
-    <hr>
-    <a th:href="@{/user/stays}">Back to Parkings List</a>
+    
 
 </div>
 

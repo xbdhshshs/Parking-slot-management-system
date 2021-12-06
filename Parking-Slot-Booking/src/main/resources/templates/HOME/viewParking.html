@@ -36,8 +36,8 @@
                 <img src="https://st2.depositphotos.com/7752738/11007/v/600/depositphoto
 s_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-fluid img-thumbnail" alt="parking">
             </td>
-            <p th:text="'Parking spacce name: ' + ${parking.parkingName}"/>
-            <p th:text="'Hosted by '+ ${parking.user.userName}"/>
+            <p th:text="'Parking space name: ' + ${parking.parkingName}"/>
+            <p th:text="'Hosted by :'+ ${parking.user.userName}"/>
             <p th:text="'Recommended car type: ' + ${parking.countrey}"/>
             <p th:text="'Recommended car details: ' + ${parking.city}"/>
             <p th:text="'Rating: ' + ${parking.adress}"/>
@@ -61,8 +61,6 @@ s_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-flui
 
     </div>
 
-    <hr>
-    <a th:href="@{/parkings}">Back to Parking space List</a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
