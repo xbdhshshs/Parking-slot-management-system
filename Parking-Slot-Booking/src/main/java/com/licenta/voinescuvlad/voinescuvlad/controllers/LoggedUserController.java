@@ -175,7 +175,6 @@ public class LoggedUserController {
 
 
         parkingService.save(parking);
-        AdminController.i++;
         return "redirect:/user/stays";
     }
 

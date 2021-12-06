@@ -20,5 +20,5 @@ public interface UserService extends UserDetailsService {
 
     void deleteUserById(int id);
 
-
+    public int max();
 }

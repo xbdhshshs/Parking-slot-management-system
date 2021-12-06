@@ -35,5 +35,5 @@ public interface ParkingService {
 
     List<Parking> findAllByTheCountry(String country);
 
-
+    public int max();
 }

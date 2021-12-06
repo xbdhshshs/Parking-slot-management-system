@@ -87,4 +87,9 @@ public class UserServiceImpl implements UserService {
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public int max(){
+        return userRepository.max();
+    }
 }

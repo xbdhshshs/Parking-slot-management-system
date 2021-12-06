@@ -117,5 +117,8 @@ public class ParkingServiceImpl implements ParkingService {
         return parkingRepository.findAllByCountreyContainsAndStatusLike(country,"accepted");
     }
 
-
+    @Override
+    public int max(){
+        return parkingRepository.max();
+    }
 }

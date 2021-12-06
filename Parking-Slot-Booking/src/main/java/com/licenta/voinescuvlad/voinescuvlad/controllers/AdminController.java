@@ -28,8 +28,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequestMapping("/admin")
 public class AdminController {
 
-    public static int i = 4;//keep it 0 at the start of every rerun provided the database is empty
-    public static int u = 33;//keep it 0 at the start of every rerun provided the database is empty
     @Autowired
     private ParkingService parkingService;
 
@@ -79,25 +77,29 @@ public class AdminController {
         }
 
         parkingService.save(parking);
-        AdminController.i++;
-        return "redirect:/admin/checkParking/" + AdminController.i;
+        return "redirect:/admin/checkParking/" + parkingService.max();
     }
 
     //USER
 
     @GetMapping("/users")
     public String userList(Model theModel) {
-        List<User> theUsers = userService.findAllUsers();
-        User admin = userService.findByUsername("admin");
-        User w = userService.findByUsername("worker");
-        User w1 = userService.findByUsername("worker A");
-        User w2 = userService.findByUsername("worker B");
-        User w3 = userService.findByUsername("worker C");
-        theUsers.remove(admin);
-        theUsers.remove(w);
-        theUsers.remove(w1);
-        theUsers.remove(w2);
-        theUsers.remove(w3);
+        List<User> theUsers = new ArrayList<>();
+        List <Role> theRoles = (List<Role>) roleRepository.findAll();
+        List<Role> use = new ArrayList<>() ;
+        for(Role role : theRoles){
+            if(role.getName().equals("ROLE_USER")){
+                use.add(role);
+            }
+        }
+        for(Role role : use){
+            long j = role.getId();
+            j--;
+            User useru = userService.findById((int)j);
+            theUsers.add(useru);
+
+        }
+
 
         if (theUsers.size() == 0)
             return "/ADM/empty";
@@ -137,7 +139,7 @@ public class AdminController {
                     result);
             attr.addFlashAttribute("user", user);
 
-            return "redirect:/registration";
+            return "redirect:/admin/workers/registerworker";
         }
 
         try {
@@ -147,8 +149,7 @@ public class AdminController {
             e.printStackTrace();
         }
         userService.save(user);
-        AdminController.u = AdminController.u + 2;
-        long r = AdminController.u + 1;
+        long r = userService.max() + 1;
         System.out.println(r);
         Optional<Role> optional = roleRepository.findById(r);
 
@@ -158,7 +159,7 @@ public class AdminController {
         role.setName(trial);
         roleRepository.save(role);
 
-        return "/ADM/workerList";
+        return "redirect:/";
     }
 
     @GetMapping(path = "/showFormForAdd")
@@ -442,17 +443,20 @@ public class AdminController {
 
     @GetMapping("/worker")
     public String workerList(Model theModel) {
-        List<User> theUsers = userService.findAllUsers();
-        User admin = userService.findByUsername("admin");
-        User u = userService.findByUsername("user");
-        User u1 = userService.findByUsername("user A");
-        User u2 = userService.findByUsername("user B");
-        User u3 = userService.findByUsername("user C");
-        theUsers.remove(admin);
-        theUsers.remove(u);
-        theUsers.remove(u1);
-        theUsers.remove(u2);
-        theUsers.remove(u3);
+        List<User> theUsers = new ArrayList<>();
+        List<Role> theRoles = (List<Role>) roleRepository.findAll();
+        List<Role> work = new ArrayList<>();
+        for(Role role : theRoles){
+            if(role.getName().equals("ROLE_WORKER")){
+                work.add(role);
+            }
+        }
+        for(Role role : work){
+            long j = role.getId();
+            j--;
+            User worker =userService.findById((int)j);
+            theUsers.add(worker);
+        }
 
         if (theUsers.size() == 0)
             return "/ADM/empty";
