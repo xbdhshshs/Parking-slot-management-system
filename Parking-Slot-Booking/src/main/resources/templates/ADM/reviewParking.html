@@ -75,9 +75,11 @@
                     <input type="hidden" id="parkingStatus" name="parkingStatus" value="">
                     <button class="w3-button w3-green status-button" data-status="accepted">Accept</button>
                     <button class="w3-button w3-red status-button" data-status="declined">Decline</button>
+                    <br>
+                    <br>
+                    <a th:href="@{/admin/pendingParkings}">Back to posting requests</a>
                 </form>
             </div>
-            <a th:href="@{/admin/pendingParkings}">Back to posting requests</a>
         </div>
 
     </div>
