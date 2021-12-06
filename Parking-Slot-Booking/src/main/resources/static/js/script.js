@@ -1,5 +1,5 @@
 const paymentStart = () => {
-    var amount =  $("#payment_field").val();
+    var amount =  $("#outTime").val()-$("#inTime").val() + $("#days").val();
     var options = {
         "key": "rzp_test_haDRsJIQo9vFPJ",
         "amount": amount*1000, // Example: 2000 paise = INR 20

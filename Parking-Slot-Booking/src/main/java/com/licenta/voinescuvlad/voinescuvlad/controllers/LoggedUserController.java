@@ -318,14 +318,20 @@ public class LoggedUserController {
             return "redirect:/user/viewParking/" + id + "/calendar/showFormForAdd";
         }
 
-        if (bookingService.isOverlapping(booking, id) == false) {
+      /*  if (bookingService.isOverlapping(booking, id) == false) {
             model.addAttribute("id", id);
             return "/LU/errorBookingForm";
 
-        } else {
+        }*/ else {
             Parking parking = parkingService.findById(id);
             ParkingDto dto = converter.getParkingDtoFromParking(parking);
             booking.setParkingDto(dto);
+
+            try {
+                Thread.sleep( 1000000000);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
             bookingService.save(booking);
 
 
