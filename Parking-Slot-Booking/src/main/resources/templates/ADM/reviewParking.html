@@ -40,24 +40,20 @@
                         <td><p th:text="${parking.parkingName}"/></td>
                     </tr>
                     <tr>
-                        <td><p th:text="'Parking countrey: '"/></td>
+                        <td><p th:text="'Recommended car type: '"/></td>
                         <td><p th:text="${parking.countrey}"/></td>
                     </tr>
                     <tr>
-                        <td><p th:text="'Parking city: '"/></td>
+                        <td><p th:text="'Recommended car models: '"/></td>
                         <td><p th:text="${parking.city}"/></td>
                     </tr>
                     <tr>
-                        <td><p th:text="'Adress: '"/></td>
+                        <td><p th:text="'Rating: '"/></td>
                         <td><p th:text="${parking.adress}"/></td>
                     </tr>
                     <tr>
-                        <td><p th:text="'Initial price: '"/></td>
+                        <td><p th:text="'Price/hour: '"/></td>
                         <td><p th:text="${parking.ppn}"/></td>
-                    </tr>
-                    <tr>
-                        <td><p th:text="'Owner name: '"/></td>
-                        <td><p th:text="${parking.user.getUserName()}"/></td>
                     </tr>
                     <tr>
                         <td><p th:text="'Owner name: '"/></td>
@@ -77,7 +73,6 @@
                     <button class="w3-button w3-red status-button" data-status="declined">Decline</button>
                     <br>
                     <br>
-                    <a th:href="@{/admin/pendingParkings}">Back to posting requests</a>
                 </form>
             </div>
         </div>
