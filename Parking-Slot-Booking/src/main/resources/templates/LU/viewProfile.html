@@ -50,38 +50,27 @@
             		<td style="font-weight: bolder;"><p th:text="'User Name:'"></p></td>
             		<td><p th:text="${user.userName}"></p></td>
             	</tr>
-<!--            	<tr>-->
-<!--            		<td style="font-weight: bolder;"> Rating: </td>-->
-<!--            		<td th:text="${user.getRatting()>0 ? 'Rating: '+user.getRatting()+'/5' : 'No rating yet'}"></td>-->
-<!--            	</tr>-->
+                <tr>
+                    <td style="font-weight: bolder;"><p th:text="'E-mail : '"></p></td>
+                    <td><p th:text="${user.email}"></p></td>
+                </tr>
             	<tr>
             		<td style="font-weight: bolder;"><p th:text="'Reservations made:'"></p></td>
             		<td><p th:text="${size}"></p></td>
             	</tr>
                 <tr>
             		<td style="font-weight: bolder;"><p th:text="'Total spent:'"></p></td>
-            		<td><p th:text="'Rs'+${sum}"></p></td>
+            		<td><p th:text="'Rs '+${sum}"></p></td>
             	</tr>
             	<tr>
-            		<td style="font-weight: bolder;"><p th:text="'Active parking Slots:'"></p></td>
-            		<td><p th:text="${activeParkings}"></p></td>
-            	</tr>
-<!--                <tr>-->
-<!--            		<td style="font-weight: bolder;"><p th:text="'Money received: '"></p></td>-->
-<!--            		<td><p th:text="'$ '+${guestIncome}"></p></td>-->
-<!--            	</tr>-->
-            	<tr>
-            		<td style="font-weight: bolder;"><p th:text="'Bookings placed : '"></p></td>
-            		<td><p th:text="${reservations}"></p></td>
+            		<td style="font-weight: bolder;"><p th:text="'Phone number:'"></p></td>
+            		<td><p th:text="${user.phone}"></p></td>
             	</tr>
             </table>
             </div>
 
 
         </div>
-
-
-        <hr>
 
     </div>
 </div>

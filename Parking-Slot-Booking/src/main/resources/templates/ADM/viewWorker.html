@@ -27,13 +27,13 @@
         <h1 align="center">Worker Details</h1>
     </div>
 </section>
-<div class="container-viewWorker" style="align-items: center;">
+<div class="container" style="align-items: center;">
     <div class="box" style="border-collapse:separate; border:solid black 1px;;border-radius: 20px!important">
         <div class="row" >
-            <div class="col-md-5" th:object="${user}" method="POST">
+            <div th:object="${user}" method="POST">
                 <table>
                     <tr>
-                        <td style="font-weight: bolder;"><p th:text="'worker name: '"/></td>
+                        <td style="font-weight: bolder;"><p th:text="'worker name:  '"/></td>
                         <td><p th:text="${user.userName}"/></td>
                     </tr>
                     <tr>
@@ -45,7 +45,7 @@
                         <td><p  th:text="${apartNames}"></p></td>
                     </tr>
                 </table>
-                <a th:href="@{/admin/worker}">Back to Worker List</a>
+<!--                <a th:href="@{/admin/worker}">Back to Worker List</a>-->
             </div>
         </div>
     </div>
