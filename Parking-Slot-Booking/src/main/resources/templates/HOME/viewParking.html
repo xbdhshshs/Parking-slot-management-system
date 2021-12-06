@@ -19,12 +19,12 @@
 
 <body>
 
-<div th:insert="~{/fragments/header :: header}"></div>
+<div th:insert="~{/fragments/header :: header}"></div><br><br>
 
-<section class="jumbotron text-left">
-    <div class="container">
-        <h1 class="jumbotron-heading">Parking space Details</h1>
-        <p class="lead text-muted mb-0"> Here are the detail infos of the parking space</p>
+<section >
+    <div >
+        <h1 style="text-align: center">Parking space Details</h1><br>
+
     </div>
 </section>
 
@@ -33,7 +33,8 @@
 
         <div class="col-md-5" th:object="${parking}" method="POST">
             <td class="w-25">
-                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="parking">
+                <img src="https://st2.depositphotos.com/7752738/11007/v/600/depositphoto
+s_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-fluid img-thumbnail" alt="parking">
             </td>
             <p th:text="'Parking spacce name: ' + ${parking.parkingName}"/>
             <p th:text="'Hosted by '+ ${parking.user.userName}"/>
