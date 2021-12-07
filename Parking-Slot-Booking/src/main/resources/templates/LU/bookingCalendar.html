@@ -28,10 +28,10 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>Ocuppied from</th>
-            <th>Untill</th>
-
-
+            <th>Occupied from</th>
+            <th>Until</th>
+            <th>In Time</th>
+            <th>Out Time</th>
 
         </tr>
         </thead>
@@ -43,6 +43,8 @@
             
             <td th:text="${tempBookings.checkIn.toString().substring(0,10)}"/>
             <td th:text="${tempBookings.checkOut.toString().substring(0,10)}"/>
+            <td th:text="${tempBookings.inTime}"/>
+            <td th:text="${tempBookings.outTime}"/>
 
 
 
