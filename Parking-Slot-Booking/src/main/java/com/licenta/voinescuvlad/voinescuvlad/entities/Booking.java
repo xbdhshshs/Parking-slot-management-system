@@ -18,6 +18,12 @@ public class Booking {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkIn;
 
+    @Column(name = "checkin_time")
+    private String inTime;
+
+    @Column(name = "checkout_time")
+    private String outTime;
+
     @Column(name = "checkout_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkOut;

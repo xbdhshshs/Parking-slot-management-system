@@ -35,7 +35,13 @@
                   </div>   -->
                 <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                     <li class="nav-item">
-                        <a th:href="@{/parkings}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Stays</a>
+                        <a th:href="@{/parkings}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Parkings</a>
+                    </li>
+                </div>
+
+                <div sec:authorize="hasAuthority('ROLE_WORKER')">
+                    <li class="nav-item">
+                        <a th:href="@{/parkings}" class="nav-link" href="#"><i class="fas fa-car"></i>&nbsp;Parkings</a>
                     </li>
                 </div>
 <!--                <div sec:authorize="isAnonymous()">-->

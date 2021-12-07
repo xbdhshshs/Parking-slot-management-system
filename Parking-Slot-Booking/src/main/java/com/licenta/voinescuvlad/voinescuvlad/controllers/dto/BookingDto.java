@@ -21,6 +21,8 @@ public class BookingDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkOut;
 
+    private String inTime;
+    private String outTime;
     private ParkingDto parkingDto;
 
     public int getBookingId() {
@@ -33,6 +35,22 @@ public class BookingDto {
 
     public Date getCheckIn() {
         return checkIn;
+    }
+
+    public void setInTime(String inTime) {
+        this.inTime = inTime;
+    }
+
+    public String getOutTime() {
+        return outTime;
+    }
+
+    public void setOutTime(String outTime) {
+        this.outTime = outTime;
+    }
+
+    public String getInTime() {
+        return inTime;
     }
 
     public void setCheckIn(Date checkIn) {
