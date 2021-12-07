@@ -1,12 +1,12 @@
 const paymentStart = () => {
     var amount =  $("#outTime").val()-$("#inTime").val() + $("#days").val();
-    var time= $("#outTime").val() - $("#inTime").val()
-    if(time>){
-
-    }
-    else{
-
-    }
+    var time= $("#outTime").val() - $("#inTime").val();
+    // if(time>){
+    //
+    // }
+    // else{
+    //
+    // }
     var options = {
         "key": "rzp_test_haDRsJIQo9vFPJ",
         "amount": amount*1000, // Example: 2000 paise = INR 20

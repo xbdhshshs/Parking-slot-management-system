@@ -30,8 +30,6 @@
         <tr>
             <th>Occupied from</th>
             <th>Until</th>
-            <th>In Time</th>
-            <th>Out Time</th>
 
         </tr>
         </thead>
@@ -43,16 +41,6 @@
             
             <td th:text="${tempBookings.checkIn.toString().substring(0,10)}"/>
             <td th:text="${tempBookings.checkOut.toString().substring(0,10)}"/>
-            <td th:text="${tempBookings.inTime}"/>
-            <td th:text="${tempBookings.outTime}"/>
-
-
-
-
-
-
-
-
         </tr>
         </tbody>
     </table>
