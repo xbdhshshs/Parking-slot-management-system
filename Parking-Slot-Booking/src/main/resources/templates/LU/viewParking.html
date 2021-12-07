@@ -20,31 +20,51 @@
 <body>
 
 <div th:insert="~{/fragments/header :: header}"></div>
-
-<section class="jumbotron text-left">
-    <div class="container">
-        <h1 class="jumbotron-heading">Slot Details</h1>
-        <p class="lead text-muted mb-0"> Here are the detail info of Parking Slots</p>
+<br>
+<br>
+<section class="text-center">
+    <div>
+        <h1>Parking Slot Details</h1>
     </div>
 </section>
 
-<div class="container">
+<div class="container" style="align-items:center">
+    <div class="box" style="border-collapse:separate; border:solid black 1px; border-radius:20px!important">
     <div class="row">
-
         <div class="col-md-5" th:object="${parking}" method="POST">
-            <td class="w-25">
-                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="parking">
-            </td>
-            <p th:text="'Parking space name: ' + ${parking.parkingName}"/>
-            <p th:text="'Hosted by :'+ ${parking.user.userName}"/>
-            <p th:text="'Recommended car type: ' + ${parking.countrey}"/>
-            <p th:text="'Recommended car models: ' + ${parking.city}"/>
-            <p th:text="'Rating: ' + ${parking.adress}"/>
-            <p th:text="'Price/hour: ' + ${parking.ppn}"/>
-            <p th:text="'Number of active bookings: '+ ${valid.size()}"/>
+            <img src="https://st2.depositphotos.com/7752738/11007/v/600/depositphotos_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-fluid img-thumbnail" alt="parking">
+            <table>
+                <tr>
+                    <td><p th:text="'Parking space name: '"/></td>
+                    <td><p th:text="${parking.parkingName}"/></td>
+                </tr>
+                <tr>
+                    <td><p th:text="'Hosted by :'"/></td>
+                    <td><p th:text="${parking.user.userName}"/></td>
+                </tr>
+                <tr>
+                    <td><p th:text="'Recommended car type: '"/></td>
+                    <td><p th:text="${parking.countrey}"/></td>
+                </tr>
+                <tr>
+                    <td><p th:text="'Recommended car models: '"/></td>
+                    <td><p th:text="${parking.city}"/></td>
+                </tr>
+                <tr>
+                    <td><p th:text="'Rating: '"/></td>
+                    <td><p th:text="${parking.adress}"/></td>
+                </tr>
+                <tr>
+                    <td><p th:text="'Price/hour: '"/></td>
+                    <td><p th:text="${parking.ppn}"/></td>
+                </tr>
+                <tr>
+                    <td><p th:text="'Number of active bookings: '"/></td>
+                    <td><p th:text="${valid.size()}"/></td>
+                </tr>
+            </table>
 <!--            <p th:text="${parking.getRatting()>0 ?parking.getRatting() : 'No ratting yet'}"  />-->
-
-
+        </div>
         </div>
 
         <table class="table table-bordered table-striped" style="background-color:white">
@@ -53,10 +73,6 @@
                 <th>Check in</th>
                 <th>Check out</th>
                 <th>Who made this reservation</th>
-
-
-
-
 
             </tr>
             </thead>
@@ -79,7 +95,8 @@
 
 
     
-
+    <br>
+    <br>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
