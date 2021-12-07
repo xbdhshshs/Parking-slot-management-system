@@ -1,17 +1,24 @@
 const paymentStart = () => {
-    var amount =  $("#outTime").val()-$("#inTime").val() + $("#days").val();
+    var amount; //=  $("#outTime").val()-$("#inTime").val() + $("#days").val();
     var time= $("#outTime").val() - $("#inTime").val();
-    // if(time>){
-    //
-    // }
-    // else{
-    //
-    // }
+    let desc, xyz;
+    if(time>4){
+        amount=$("#outTime").val() - $("#inTime").val();
+        amount=amount*2500;
+        desc="Minimum payment: 100";
+        xyz = "Parking charges:"+ (amount/100-100) ;
+    }
+    else{
+        amount=$("#outTime").val() - $("#inTime").val();
+        amount=amount*2500;
+        xyz="Minimum payment: 100";
+        desc = "Amount refunded:"+(100-amount/100) +" Final amount:"+(amount/100);
+    }
     var options = {
         "key": "rzp_test_haDRsJIQo9vFPJ",
-        "amount": amount*1000, // Example: 2000 paise = INR 20
-        "name": "Pay and Park",
-        "description": "Proceed to make payment",
+        "amount": amount, // Example: 2000 paise = INR 20
+        "name": xyz,
+        "description": desc,
         "image": "",// COMPANY LOGO
         "handler": function (response) {
             console.log(response);
