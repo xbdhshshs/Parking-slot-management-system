@@ -12,7 +12,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
-	<link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
+    <link rel = "icon" href = "https://img.icons8.com/color/50/000000/parking.png"/>" type = "image/x-icon">
     <!--  -->
 
 </head>
@@ -38,9 +38,9 @@
                class="form-control mb-4 col-4" placeholder="Check-out date"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('checkOut')}" th:errors="*{checkOut}"></p>
 
-        <input type="number" th:field = "*{inTime}" id="inTime" class="alert alert-danger" placeholder="In-time"/>
-        <input type="number" th:field = "*{outTime}" id="outTime" class="alert alert-danger" placeholder="Out-time"/>
-        <input type="number" id="days" class="alert alert-danger" placeholder="days"/>
+        <input type="number" id="inTime" class="alert alert-danger" style="background-color: white" placeholder="In-time"/><br>
+        <input type="number" id="outTime" class="alert alert-danger" style="background-color: white"  placeholder="Out-time"/><br>
+        <input type="number" id="days" class="alert alert-danger" style="background-color: white" placeholder="days"/><br>
         <button onclick= "paymentStart()" type="submit" class="btn btn-info col-2" >Book</button>
     </form>
 
@@ -57,9 +57,9 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </body>
 <style>
-	body{
-		background-image: url('https://wallpaperaccess.com/full/303003.jpg');
-		background-size: cover;
-	}
+    body{
+        background-image: url('https://wallpaperaccess.com/full/303003.jpg');
+        background-size: cover;
+    }
 </style>
 </html>
