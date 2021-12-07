@@ -3,8 +3,8 @@ const paymentStart = () => {
     var options = {
         "key": "rzp_test_haDRsJIQo9vFPJ",
         "amount": amount*1000, // Example: 2000 paise = INR 20
-        "name": "Smart Car Park",
-        "description": "description",
+        "name": "Pay and Park",
+        "description": "Proceed to make payment",
         "image": "",// COMPANY LOGO
         "handler": function (response) {
             console.log(response);

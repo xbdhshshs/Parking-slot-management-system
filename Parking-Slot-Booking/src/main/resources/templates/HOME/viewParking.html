@@ -66,6 +66,10 @@ s_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-flui
                 <a th:href="@{'/user/viewParking/'+${parking.id}+'/calendar'}" class="btn btn-primary btn-lg">Show the booking calendar for this parking</a>
             </div>
 
+<!--                <div sec:authorize="hasAuthority('ROLE_ADMIN')">-->
+<!--                    <a th:href="@{'/user/viewParking/'+${parking.id}+'/calendar'}" class="btn btn-primary btn-lg">Show the booking calendar for this parking</a>-->
+<!--                </div>-->
+
             <div sec:authorize="isAnonymous()">
                 <a th:href="@{/stays}" class="btn btn-primary btn-lg">Log in to get the possibility to access our reservation system</a>
             </div>

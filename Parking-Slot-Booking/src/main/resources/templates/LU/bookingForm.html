@@ -38,9 +38,9 @@
                class="form-control mb-4 col-4" placeholder="Check-out date"/>
         <p class="alert alert-danger" th:if="${#fields.hasErrors('checkOut')}" th:errors="*{checkOut}"></p>
 
-        <input type="number" id="inTime" class="alert alert-danger" placeholder="intime">
-        <input type="number" id="outTime" class="alert alert-danger" placeholder="outtime">
-        <input type="number" id="days" class="alert alert-danger" placeholder="days">
+        <input type="number" id="inTime" class="alert alert-danger" placeholder="In-time"/>
+        <input type="number" id="outTime" class="alert alert-danger" placeholder="Out-time"/>
+        <input type="number" id="days" class="alert alert-danger" placeholder="days"/>
         <button onclick= "paymentStart()" type="submit" class="btn btn-info col-2" >Book</button>
     </form>
 

@@ -328,7 +328,7 @@ public class LoggedUserController {
             booking.setParkingDto(dto);
 
             try {
-                Thread.sleep( 1000000000);
+                Thread.sleep( 20000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
