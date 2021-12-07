@@ -261,6 +261,24 @@ public class AdminController {
     }
 
 
+
+    @RequestMapping(path = "/viewParking/{id}")
+    public String viewParkingById(Model model, @PathVariable("id") int id) {
+        Parking parking = parkingService.findById(id);
+        model.addAttribute(parking);
+        List<Booking> activeBookings = bookingService.findBookingByTheParking(id);
+        Date actual = new Date();
+        List<Booking> valid = new ArrayList<>();
+        for (Booking b : activeBookings) {
+            if (b.getCheckIn().after(actual))
+                valid.add(b);
+        }
+        model.addAttribute("valid", valid);
+
+        return "/LU/viewParking";
+    }
+
+
     //STATISTICS
 
 //    @RequestMapping(path = "/statistics")

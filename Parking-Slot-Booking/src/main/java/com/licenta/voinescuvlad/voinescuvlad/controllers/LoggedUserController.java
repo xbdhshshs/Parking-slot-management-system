@@ -121,6 +121,9 @@ public class LoggedUserController {
             return "/LU/list-parkings";
         }
     }
+  //  @GetMapping(path = "/viewParking/{id}"){
+
+    //}
 
     @RequestMapping(path = "/viewParking/{id}")
     public String viewParkingById(Model model, @PathVariable("id") int id) {

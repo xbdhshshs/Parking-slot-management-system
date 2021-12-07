@@ -46,7 +46,9 @@
         <tr th:each="tempParkings : ${parkings}">
 
             <td class="w-25">
-                <img src="https://st2.depositphotos.com/2704315/8710/v/950/depositphotos_87107884-stock-illustration-vector-parking-flat-cartoon-illustration.jpg" class="img-fluid img-thumbnail" alt="parking">
+                <a th:href="@{|/worker/viewParking/${tempParkings.id}|}">
+                    <img src="https://st2.depositphotos.com/2704315/8710/v/950/depositphotos_87107884-stock-illustration-vector-parking-flat-cartoon-illustration.jpg" class="img-fluid img-thumbnail" alt="parking">
+                </a>
             </td>
             <td th:text="${tempParkings.parkingName}"/>
             <td th:text="${tempParkings.countrey}"/>

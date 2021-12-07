@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,10 +69,17 @@
                 <tbody>
                 <tr th:each="tempParkings : ${search}" style="background-color: white">
 
-                    <td class="w-25">
-                        <a th:href="@{|/viewParking/${tempParkings.id}|}">
+                    <td class="w-25" sec:authorize="hasAuthority('ROLE_ADMIN')">
+
+                        <a th:href="@{|/admin/viewParking/${tempParkings.id}|}">
                             <img src="https://st2.depositphotos.com/7752738/11007/v/600/depositphotos_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-fluid img-thumbnail1" alt="parking">
                         </a>
+                    </td>
+                    <td class="w-25" sec:authorize="hasAuthority('ROLE_USER')">
+
+                            <a th:href="@{|/viewParking/${tempParkings.id}|}">
+                                <img src="https://st2.depositphotos.com/7752738/11007/v/600/depositphotos_110075024-stock-illustration-parking-lot-with-sign-vector.jpg" class="img-fluid img-thumbnail1" alt="parking">
+                            </a>
                     </td>
                     <td th:text="${tempParkings.parkingName}"/>
                     <td th:text="${tempParkings.countrey}"/>

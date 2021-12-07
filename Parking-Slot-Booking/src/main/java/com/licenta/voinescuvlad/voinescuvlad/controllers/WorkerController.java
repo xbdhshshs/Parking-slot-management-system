@@ -122,7 +122,6 @@ public class WorkerController {
             return "/Worker/list-parkings";
         }
     }
-
     @RequestMapping(path = "/viewParking/{id}")
     public String viewParkingById(Model model, @PathVariable("id") int id) {
         Parking parking = parkingService.findById(id);
@@ -136,8 +135,10 @@ public class WorkerController {
         }
         model.addAttribute("valid", valid);
 
-        return "/Worker/viewParking";
+        return "/LU/viewParking";
     }
+
+
 
     @RequestMapping(path = "/delete/{id}")
     public String deleteParkingById(Model model, @PathVariable("id") int id) {
